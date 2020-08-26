@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liux.club/"/>
-  <updated>2020-06-28T00:16:10.822Z</updated>
+  <updated>2020-08-26T01:38:16.117Z</updated>
   <id>http://liux.club/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>springboot读取自定义properties配置文件方法</title>
+    <link href="http://liux.club/2020/08/26/springboot%E8%AF%BB%E5%8F%96%E8%87%AA%E5%AE%9A%E4%B9%89properties%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%96%B9%E6%B3%95/"/>
+    <id>http://liux.club/2020/08/26/springboot%E8%AF%BB%E5%8F%96%E8%87%AA%E5%AE%9A%E4%B9%89properties%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%96%B9%E6%B3%95/</id>
+    <published>2020-08-26T01:36:33.000Z</published>
+    <updated>2020-08-26T01:38:16.117Z</updated>
+    
+    <content type="html"><![CDATA[<p>###1. 添加pom.xml依赖</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;###1. 添加pom.xml依赖&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+      <category term="SpringBoot" scheme="http://Liux.club/categories/SpringBoot/"/>
+    
+    
+      <category term="tomcat" scheme="http://Liux.club/tags/tomcat/"/>
+    
+  </entry>
   
   <entry>
     <title>IIS部署后客户端访问报403</title>
