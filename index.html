@@ -347,7 +347,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  194
+                  267
                 </span>
               
 
@@ -393,6 +393,9 @@
 
 <h3 id="4-写一个实体类-属性和配置文件对应"><a href="#4-写一个实体类-属性和配置文件对应" class="headerlink" title="4. 写一个实体类, 属性和配置文件对应"></a>4. 写一个实体类, 属性和配置文件对应</h3><p><img src="/2020/08/26/springboot%E8%AF%BB%E5%8F%96%E8%87%AA%E5%AE%9A%E4%B9%89properties%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%96%B9%E6%B3%95/img2.png" alt></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">import lombok.Data;</span><br><span class="line">import org.springframework.boot.context.properties.ConfigurationProperties;</span><br><span class="line">import org.springframework.context.annotation.Configuration;</span><br><span class="line">import org.springframework.context.annotation.PropertySource;</span><br><span class="line">import org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line">@Configuration</span><br><span class="line">@ConfigurationProperties(prefix &#x3D; &quot;remote&quot; ,ignoreUnknownFields &#x3D; false)</span><br><span class="line">@PropertySource(&quot;classpath:config&#x2F;application.properties&quot;)</span><br><span class="line">@Data</span><br><span class="line">@Component</span><br><span class="line">public class RemoteProperties &#123;</span><br><span class="line">    private String title;</span><br><span class="line">    private String description;</span><br><span class="line"></span><br><span class="line">    public String getTitle()&#123;</span><br><span class="line">        return title;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getDescription()&#123;</span><br><span class="line">        return  description;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-调用配置文件信息的类"><a href="#5-调用配置文件信息的类" class="headerlink" title="5. 调用配置文件信息的类"></a>5. 调用配置文件信息的类</h3><p><img src="/2020/08/26/springboot%E8%AF%BB%E5%8F%96%E8%87%AA%E5%AE%9A%E4%B9%89properties%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%96%B9%E6%B3%95/img3.png" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.boot.context.properties.EnableConfigurationProperties;</span><br><span class="line">import org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line">import org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line">@EnableConfigurationProperties(RemoteProperties.class)</span><br><span class="line">@RestController</span><br><span class="line">public class PageResultController &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    RemoteProperties remoteProperties;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(&quot;&#x2F;indexMap&quot;)</span><br><span class="line">    public String index()&#123;</span><br><span class="line">        return &quot;标题&quot;+remoteProperties.getTitle()+&quot;说明&quot;+remoteProperties.getDescription();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
         
       
@@ -1133,7 +1136,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">495</span>
+    <span title="Site words total count">568</span>
   
   -->
 </div>
@@ -1163,7 +1166,7 @@
 </div>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共495字</span>
+  <span class="post-count">博客全站共568字</span>
 </div>
         
 
