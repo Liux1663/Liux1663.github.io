@@ -1,89 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search> 
-  
-  
-    
-    <entry>
-      <title>springboot读取自定义properties配置文件方法</title>
-      <link href="/2020/08/26/springboot%E8%AF%BB%E5%8F%96%E8%87%AA%E5%AE%9A%E4%B9%89properties%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%96%B9%E6%B3%95/"/>
-      <url>/2020/08/26/springboot%E8%AF%BB%E5%8F%96%E8%87%AA%E5%AE%9A%E4%B9%89properties%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%96%B9%E6%B3%95/</url>
-      
-        <content type="html"><![CDATA[<h2 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h2><h3 id="1-添加pom-xml依赖"><a href="#1-添加pom-xml依赖" class="headerlink" title="1. 添加pom.xml依赖"></a>1. 添加pom.xml依赖</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- springboot configuration依赖 --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;</span><br><span class="line">      &lt;artifactId&gt; spring-boot-configuration-processor&lt;&#x2F;artifactId&gt;</span><br><span class="line">      &lt;optional&gt; true &lt;&#x2F;optional&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure><h3 id="2-在resources下建一个config包-当然包名随意-在包里建一个application-properties-文件名随意"><a href="#2-在resources下建一个config包-当然包名随意-在包里建一个application-properties-文件名随意" class="headerlink" title="2. 在resources下建一个config包(当然包名随意), 在包里建一个application.properties(文件名随意)"></a>2. 在resources下建一个config包(当然包名随意), 在包里建一个application.properties(文件名随意)</h3><p><img src="/2020/08/26/springboot%E8%AF%BB%E5%8F%96%E8%87%AA%E5%AE%9A%E4%B9%89properties%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%96%B9%E6%B3%95/img1.png" alt></p><h3 id="3-在配置文件中写入测试内容"><a href="#3-在配置文件中写入测试内容" class="headerlink" title="3. 在配置文件中写入测试内容"></a>3. 在配置文件中写入测试内容</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">remote.title&#x3D;纯洁的微笑</span><br><span class="line">remote.description&#x3D;分享生活和技术</span><br></pre></td></tr></table></figure><h3 id="4-写一个实体类-属性和配置文件对应"><a href="#4-写一个实体类-属性和配置文件对应" class="headerlink" title="4. 写一个实体类, 属性和配置文件对应"></a>4. 写一个实体类, 属性和配置文件对应</h3><p><img src="/2020/08/26/springboot%E8%AF%BB%E5%8F%96%E8%87%AA%E5%AE%9A%E4%B9%89properties%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%96%B9%E6%B3%95/img2.png" alt></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">import lombok.Data;</span><br><span class="line">import org.springframework.boot.context.properties.ConfigurationProperties;</span><br><span class="line">import org.springframework.context.annotation.Configuration;</span><br><span class="line">import org.springframework.context.annotation.PropertySource;</span><br><span class="line">import org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line">@Configuration</span><br><span class="line">@ConfigurationProperties(prefix &#x3D; &quot;remote&quot; ,ignoreUnknownFields &#x3D; false)</span><br><span class="line">@PropertySource(&quot;classpath:config&#x2F;application.properties&quot;)</span><br><span class="line">@Data</span><br><span class="line">@Component</span><br><span class="line">public class RemoteProperties &#123;</span><br><span class="line">    private String title;</span><br><span class="line">    private String description;</span><br><span class="line"></span><br><span class="line">    public String getTitle()&#123;</span><br><span class="line">        return title;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getDescription()&#123;</span><br><span class="line">        return  description;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="5-调用配置文件信息的类"><a href="#5-调用配置文件信息的类" class="headerlink" title="5. 调用配置文件信息的类"></a>5. 调用配置文件信息的类</h3><p><img src="/2020/08/26/springboot%E8%AF%BB%E5%8F%96%E8%87%AA%E5%AE%9A%E4%B9%89properties%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%96%B9%E6%B3%95/img3.png" alt></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.boot.context.properties.EnableConfigurationProperties;</span><br><span class="line">import org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line">import org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line">@EnableConfigurationProperties(RemoteProperties.class)</span><br><span class="line">@RestController</span><br><span class="line">public class PageResultController &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    RemoteProperties remoteProperties;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(&quot;&#x2F;indexMap&quot;)</span><br><span class="line">    public String index()&#123;</span><br><span class="line">        return &quot;标题&quot;+remoteProperties.getTitle()+&quot;说明&quot;+remoteProperties.getDescription();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="方法二："><a href="#方法二：" class="headerlink" title="方法二："></a>方法二：</h2><p><img src="/2020/08/26/springboot%E8%AF%BB%E5%8F%96%E8%87%AA%E5%AE%9A%E4%B9%89properties%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%96%B9%E6%B3%95/img4.png" alt></p>]]></content>
-      
-      
+<search>
+  <entry>
+    <title>hexo在文章中添加图片</title>
+    <url>/2020/06/24/hexo%E5%9C%A8%E6%96%87%E7%AB%A0%E4%B8%AD%E6%B7%BB%E5%8A%A0%E5%9B%BE%E7%89%87/</url>
+    <content><![CDATA[<h2 id="hexo-添加图片插件"><a href="#hexo-添加图片插件" class="headerlink" title="hexo 添加图片插件"></a>hexo 添加图片插件</h2><p>安装图片插件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-asset-image --save</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/06/24/hexo%E5%9C%A8%E6%96%87%E7%AB%A0%E4%B8%AD%E6%B7%BB%E5%8A%A0%E5%9B%BE%E7%89%87/img1.png" alt></p>
+<p>在_config.yml配置文件中，修改为 post_asset_folder: true， 然后新建一篇文章</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new post ceshi</span><br></pre></td></tr></table></figure>
+
+<p>这个时候会在_posts文件夹下多出一个与文章同名文件夹，可以将当前文章用到的图片放在此文件夹下</p>
+<p><img src="/2020/06/24/hexo%E5%9C%A8%E6%96%87%E7%AB%A0%E4%B8%AD%E6%B7%BB%E5%8A%A0%E5%9B%BE%E7%89%87/img2.png" alt></p>
+<h3 id="hexo-关于图片路径不能访问"><a href="#hexo-关于图片路径不能访问" class="headerlink" title="hexo 关于图片路径不能访问"></a>hexo 关于图片路径不能访问</h3><p>通常图片路径为：<img src="/2020/06/24/hexo%E5%9C%A8%E6%96%87%E7%AB%A0%E4%B8%AD%E6%B7%BB%E5%8A%A0%E5%9B%BE%E7%89%87/img3.png" alt>  在Github中的hexo可以查看仓库路径来修改</p>
+]]></content>
       <categories>
-          
-          <category> SpringBoot </category>
-          
+        <category>Github</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> properties配置文件 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>IIS部署后客户端访问报403</title>
-      <link href="/2020/06/24/IIS%E9%83%A8%E7%BD%B2%E5%90%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AE%BF%E9%97%AE%E6%8A%A5403/"/>
-      <url>/2020/06/24/IIS%E9%83%A8%E7%BD%B2%E5%90%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AE%BF%E9%97%AE%E6%8A%A5403/</url>
-      
-        <content type="html"><![CDATA[<h3 id="错误页面"><a href="#错误页面" class="headerlink" title="错误页面"></a>错误页面</h3><p><img src="/2020/06/24/IIS%E9%83%A8%E7%BD%B2%E5%90%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AE%BF%E9%97%AE%E6%8A%A5403/img1.png" alt></p><h3 id="解决方案1"><a href="#解决方案1" class="headerlink" title="解决方案1"></a>解决方案1</h3><p>修改应用程序池版本为4.0</p><p><img src="/2020/06/24/IIS%E9%83%A8%E7%BD%B2%E5%90%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AE%BF%E9%97%AE%E6%8A%A5403/img2.png" alt></p><h3 id="解决方案2"><a href="#解决方案2" class="headerlink" title="解决方案2"></a>解决方案2</h3><p>当前主页目录浏览设置为启用</p><h3 id="解决方案3"><a href="#解决方案3" class="headerlink" title="解决方案3"></a>解决方案3</h3><p>添加默认文档<br><img src="/2020/06/24/IIS%E9%83%A8%E7%BD%B2%E5%90%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AE%BF%E9%97%AE%E6%8A%A5403/img3.png" alt></p><h3 id="解决方案4"><a href="#解决方案4" class="headerlink" title="解决方案4"></a>解决方案4</h3><p><img src="/2020/06/24/IIS%E9%83%A8%E7%BD%B2%E5%90%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AE%BF%E9%97%AE%E6%8A%A5403/img4.png" alt><br><img src="/2020/06/24/IIS%E9%83%A8%E7%BD%B2%E5%90%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AE%BF%E9%97%AE%E6%8A%A5403/img5.png" alt></p><p>SSL设置，不勾选要求SSL</p><h3 id="还有的情况是因为你的防火墙没有开放指定端口，或者域名配置相关问题"><a href="#还有的情况是因为你的防火墙没有开放指定端口，或者域名配置相关问题" class="headerlink" title="还有的情况是因为你的防火墙没有开放指定端口，或者域名配置相关问题"></a>还有的情况是因为你的防火墙没有开放指定端口，或者域名配置相关问题</h3>]]></content>
-      
-      
+  </entry>
+  <entry>
+    <title>springboot读取自定义properties配置文件方法</title>
+    <url>/2020/08/26/springboot%E8%AF%BB%E5%8F%96%E8%87%AA%E5%AE%9A%E4%B9%89properties%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<h2 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h2><h3 id="1-添加pom-xml依赖"><a href="#1-添加pom-xml依赖" class="headerlink" title="1. 添加pom.xml依赖"></a>1. 添加pom.xml依赖</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!-- springboot configuration依赖 --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;</span><br><span class="line">      &lt;artifactId&gt; spring-boot-configuration-processor&lt;&#x2F;artifactId&gt;</span><br><span class="line">      &lt;optional&gt; true &lt;&#x2F;optional&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-在resources下建一个config包-当然包名随意-在包里建一个application-properties-文件名随意"><a href="#2-在resources下建一个config包-当然包名随意-在包里建一个application-properties-文件名随意" class="headerlink" title="2. 在resources下建一个config包(当然包名随意), 在包里建一个application.properties(文件名随意)"></a>2. 在resources下建一个config包(当然包名随意), 在包里建一个application.properties(文件名随意)</h3><p><img src="/2020/08/26/springboot%E8%AF%BB%E5%8F%96%E8%87%AA%E5%AE%9A%E4%B9%89properties%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%96%B9%E6%B3%95/img1.png" alt></p>
+<h3 id="3-在配置文件中写入测试内容"><a href="#3-在配置文件中写入测试内容" class="headerlink" title="3. 在配置文件中写入测试内容"></a>3. 在配置文件中写入测试内容</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">remote.title&#x3D;纯洁的微笑</span><br><span class="line">remote.description&#x3D;分享生活和技术</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-写一个实体类-属性和配置文件对应"><a href="#4-写一个实体类-属性和配置文件对应" class="headerlink" title="4. 写一个实体类, 属性和配置文件对应"></a>4. 写一个实体类, 属性和配置文件对应</h3><p><img src="/2020/08/26/springboot%E8%AF%BB%E5%8F%96%E8%87%AA%E5%AE%9A%E4%B9%89properties%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%96%B9%E6%B3%95/img2.png" alt></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import lombok.Data;</span><br><span class="line">import org.springframework.boot.context.properties.ConfigurationProperties;</span><br><span class="line">import org.springframework.context.annotation.Configuration;</span><br><span class="line">import org.springframework.context.annotation.PropertySource;</span><br><span class="line">import org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line">@Configuration</span><br><span class="line">@ConfigurationProperties(prefix &#x3D; &quot;remote&quot; ,ignoreUnknownFields &#x3D; false)</span><br><span class="line">@PropertySource(&quot;classpath:config&#x2F;application.properties&quot;)</span><br><span class="line">@Data</span><br><span class="line">@Component</span><br><span class="line">public class RemoteProperties &#123;</span><br><span class="line">    private String title;</span><br><span class="line">    private String description;</span><br><span class="line"></span><br><span class="line">    public String getTitle()&#123;</span><br><span class="line">        return title;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getDescription()&#123;</span><br><span class="line">        return  description;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-调用配置文件信息的类"><a href="#5-调用配置文件信息的类" class="headerlink" title="5. 调用配置文件信息的类"></a>5. 调用配置文件信息的类</h3><p><img src="/2020/08/26/springboot%E8%AF%BB%E5%8F%96%E8%87%AA%E5%AE%9A%E4%B9%89properties%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%96%B9%E6%B3%95/img3.png" alt></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.boot.context.properties.EnableConfigurationProperties;</span><br><span class="line">import org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line">import org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line">@EnableConfigurationProperties(RemoteProperties.class)</span><br><span class="line">@RestController</span><br><span class="line">public class PageResultController &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    RemoteProperties remoteProperties;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(&quot;&#x2F;indexMap&quot;)</span><br><span class="line">    public String index()&#123;</span><br><span class="line">        return &quot;标题&quot;+remoteProperties.getTitle()+&quot;说明&quot;+remoteProperties.getDescription();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="方法二："><a href="#方法二：" class="headerlink" title="方法二："></a>方法二：</h2><p><img src="/2020/08/26/springboot%E8%AF%BB%E5%8F%96%E8%87%AA%E5%AE%9A%E4%B9%89properties%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%96%B9%E6%B3%95/img4.png" alt></p>
+]]></content>
       <categories>
-          
-          <category> IIS </category>
-          
+        <category>SpringBoot</category>
       </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>hexo在文章中添加图片</title>
-      <link href="/2020/06/24/hexo%E5%9C%A8%E6%96%87%E7%AB%A0%E4%B8%AD%E6%B7%BB%E5%8A%A0%E5%9B%BE%E7%89%87/"/>
-      <url>/2020/06/24/hexo%E5%9C%A8%E6%96%87%E7%AB%A0%E4%B8%AD%E6%B7%BB%E5%8A%A0%E5%9B%BE%E7%89%87/</url>
-      
-        <content type="html"><![CDATA[<h2 id="hexo-添加图片插件"><a href="#hexo-添加图片插件" class="headerlink" title="hexo 添加图片插件"></a>hexo 添加图片插件</h2><p>安装图片插件</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-asset-image --save</span><br></pre></td></tr></table></figure><p><img src="/2020/06/24/hexo%E5%9C%A8%E6%96%87%E7%AB%A0%E4%B8%AD%E6%B7%BB%E5%8A%A0%E5%9B%BE%E7%89%87/img1.png" alt></p><p>在_config.yml配置文件中，修改为 post_asset_folder: true， 然后新建一篇文章</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new post ceshi</span><br></pre></td></tr></table></figure><p>这个时候会在_posts文件夹下多出一个与文章同名文件夹，可以将当前文章用到的图片放在此文件夹下</p><p><img src="/2020/06/24/hexo%E5%9C%A8%E6%96%87%E7%AB%A0%E4%B8%AD%E6%B7%BB%E5%8A%A0%E5%9B%BE%E7%89%87/img2.png" alt></p><h3 id="hexo-关于图片路径不能访问"><a href="#hexo-关于图片路径不能访问" class="headerlink" title="hexo 关于图片路径不能访问"></a>hexo 关于图片路径不能访问</h3><p>通常图片路径为：<img src="/2020/06/24/hexo%E5%9C%A8%E6%96%87%E7%AB%A0%E4%B8%AD%E6%B7%BB%E5%8A%A0%E5%9B%BE%E7%89%87/img3.png" alt>  在Github中的hexo可以查看仓库路径来修改</p>]]></content>
-      
-      
+      <tags>
+        <tag>properties配置文件</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>IIS部署后客户端访问报403</title>
+    <url>/2020/06/24/IIS%E9%83%A8%E7%BD%B2%E5%90%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AE%BF%E9%97%AE%E6%8A%A5403/</url>
+    <content><![CDATA[<h3 id="错误页面"><a href="#错误页面" class="headerlink" title="错误页面"></a>错误页面</h3><p><img src="/2020/06/24/IIS%E9%83%A8%E7%BD%B2%E5%90%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AE%BF%E9%97%AE%E6%8A%A5403/img1.png" alt></p>
+<h3 id="解决方案1"><a href="#解决方案1" class="headerlink" title="解决方案1"></a>解决方案1</h3><p>修改应用程序池版本为4.0</p>
+<p><img src="/2020/06/24/IIS%E9%83%A8%E7%BD%B2%E5%90%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AE%BF%E9%97%AE%E6%8A%A5403/img2.png" alt></p>
+<h3 id="解决方案2"><a href="#解决方案2" class="headerlink" title="解决方案2"></a>解决方案2</h3><p>当前主页目录浏览设置为启用</p>
+<h3 id="解决方案3"><a href="#解决方案3" class="headerlink" title="解决方案3"></a>解决方案3</h3><p>添加默认文档<br><img src="/2020/06/24/IIS%E9%83%A8%E7%BD%B2%E5%90%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AE%BF%E9%97%AE%E6%8A%A5403/img3.png" alt></p>
+<h3 id="解决方案4"><a href="#解决方案4" class="headerlink" title="解决方案4"></a>解决方案4</h3><p><img src="/2020/06/24/IIS%E9%83%A8%E7%BD%B2%E5%90%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AE%BF%E9%97%AE%E6%8A%A5403/img4.png" alt><br><img src="/2020/06/24/IIS%E9%83%A8%E7%BD%B2%E5%90%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AE%BF%E9%97%AE%E6%8A%A5403/img5.png" alt></p>
+<p>SSL设置，不勾选要求SSL</p>
+<h3 id="还有的情况是因为你的防火墙没有开放指定端口，或者域名配置相关问题"><a href="#还有的情况是因为你的防火墙没有开放指定端口，或者域名配置相关问题" class="headerlink" title="还有的情况是因为你的防火墙没有开放指定端口，或者域名配置相关问题"></a>还有的情况是因为你的防火墙没有开放指定端口，或者域名配置相关问题</h3>]]></content>
       <categories>
-          
-          <category> Github </category>
-          
+        <category>IIS</category>
       </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>自建Github博客通过域名的访问</title>
-      <link href="/2020/06/24/%E8%87%AA%E5%BB%BAGithub%E5%8D%9A%E5%AE%A2%E9%80%9A%E8%BF%87%E5%9F%9F%E5%90%8D%E7%9A%84%E8%AE%BF%E9%97%AE/"/>
-      <url>/2020/06/24/%E8%87%AA%E5%BB%BAGithub%E5%8D%9A%E5%AE%A2%E9%80%9A%E8%BF%87%E5%9F%9F%E5%90%8D%E7%9A%84%E8%AE%BF%E9%97%AE/</url>
-      
-        <content type="html"><![CDATA[<p>我们在项目或者博客上传到Github的时候会出现域名不能访问自建页面的情况，检查仓库名称与配置名称是否一致，仓库名称格式为xxx.github.io(xxx为你的用户名)<br><img src="/2020/06/24/%E8%87%AA%E5%BB%BAGithub%E5%8D%9A%E5%AE%A2%E9%80%9A%E8%BF%87%E5%9F%9F%E5%90%8D%E7%9A%84%E8%AE%BF%E9%97%AE/img1.png" alt><br><img src="/2020/06/24/%E8%87%AA%E5%BB%BAGithub%E5%8D%9A%E5%AE%A2%E9%80%9A%E8%BF%87%E5%9F%9F%E5%90%8D%E7%9A%84%E8%AE%BF%E9%97%AE/img2.png" alt><br>再通过配置指定域名来访问，域名指向你的仓库地址</p>]]></content>
-      
-      
+  </entry>
+  <entry>
+    <title>自建Github博客通过域名的访问</title>
+    <url>/2020/06/24/%E8%87%AA%E5%BB%BAGithub%E5%8D%9A%E5%AE%A2%E9%80%9A%E8%BF%87%E5%9F%9F%E5%90%8D%E7%9A%84%E8%AE%BF%E9%97%AE/</url>
+    <content><![CDATA[<p>我们在项目或者博客上传到Github的时候会出现域名不能访问自建页面的情况，检查仓库名称与配置名称是否一致，仓库名称格式为xxx.github.io(xxx为你的用户名)<br><img src="/2020/06/24/%E8%87%AA%E5%BB%BAGithub%E5%8D%9A%E5%AE%A2%E9%80%9A%E8%BF%87%E5%9F%9F%E5%90%8D%E7%9A%84%E8%AE%BF%E9%97%AE/img1.png" alt><br><img src="/2020/06/24/%E8%87%AA%E5%BB%BAGithub%E5%8D%9A%E5%AE%A2%E9%80%9A%E8%BF%87%E5%9F%9F%E5%90%8D%E7%9A%84%E8%AE%BF%E9%97%AE/img2.png" alt><br>再通过配置指定域名来访问，域名指向你的仓库地址</p>
+]]></content>
       <categories>
-          
-          <category> Github </category>
-          
+        <category>Github</category>
       </categories>
-      
-      
-    </entry>
-    
-    
-  
-  
+  </entry>
 </search>
