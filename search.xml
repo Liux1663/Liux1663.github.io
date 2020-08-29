@@ -1,153 +1,196 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title>IIS部署后客户端访问报403</title>
-    <url>/2020/06/24/IIS%E9%83%A8%E7%BD%B2%E5%90%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AE%BF%E9%97%AE%E6%8A%A5403/</url>
-    <content><![CDATA[<h3 id="错误页面"><a href="#错误页面" class="headerlink" title="错误页面"></a>错误页面</h3><p><img src="/2020/06/24/IIS%E9%83%A8%E7%BD%B2%E5%90%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AE%BF%E9%97%AE%E6%8A%A5403/img1.png" alt></p>
-<h3 id="解决方案1"><a href="#解决方案1" class="headerlink" title="解决方案1"></a>解决方案1</h3><p>修改应用程序池版本为4.0</p>
-<p><img src="/2020/06/24/IIS%E9%83%A8%E7%BD%B2%E5%90%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AE%BF%E9%97%AE%E6%8A%A5403/img2.png" alt></p>
-<h3 id="解决方案2"><a href="#解决方案2" class="headerlink" title="解决方案2"></a>解决方案2</h3><p>当前主页目录浏览设置为启用</p>
-<h3 id="解决方案3"><a href="#解决方案3" class="headerlink" title="解决方案3"></a>解决方案3</h3><p>添加默认文档<br><img src="/2020/06/24/IIS%E9%83%A8%E7%BD%B2%E5%90%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AE%BF%E9%97%AE%E6%8A%A5403/img3.png" alt></p>
-<h3 id="解决方案4"><a href="#解决方案4" class="headerlink" title="解决方案4"></a>解决方案4</h3><p><img src="/2020/06/24/IIS%E9%83%A8%E7%BD%B2%E5%90%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AE%BF%E9%97%AE%E6%8A%A5403/img4.png" alt><br><img src="/2020/06/24/IIS%E9%83%A8%E7%BD%B2%E5%90%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AE%BF%E9%97%AE%E6%8A%A5403/img5.png" alt></p>
-<p>SSL设置，不勾选要求SSL</p>
-<h3 id="还有的情况是因为你的防火墙没有开放指定端口，或者域名配置相关问题"><a href="#还有的情况是因为你的防火墙没有开放指定端口，或者域名配置相关问题" class="headerlink" title="还有的情况是因为你的防火墙没有开放指定端口，或者域名配置相关问题"></a>还有的情况是因为你的防火墙没有开放指定端口，或者域名配置相关问题</h3>]]></content>
+<search> 
+  
+  
+    
+    <entry>
+      <title>JdbcTemplate基本使用</title>
+      <link href="/2020/08/29/JdbcTemplate%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/"/>
+      <url>/2020/08/29/JdbcTemplate%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</url>
+      
+        <content type="html"><![CDATA[<h3 id="JdbcTemplate基本使用"><a href="#JdbcTemplate基本使用" class="headerlink" title="JdbcTemplate基本使用"></a>JdbcTemplate基本使用</h3><p>​JDBC已经能够满足大部分用户最基本的需求，但是在使用JDBC时，必须自己来管理数据库资源如：获取PreparedStatement，设置SQL语句参数，关闭连接等步骤。</p><p>​JdbcTemplate是Spring对JDBC的封装，目的是使JDBC更加易于使用。JdbcTemplate是Spring的一部分。JdbcTemplate处理了资源的建立和释放。他帮助我们避免一些常见的错误，比如忘了总要关闭连接。他运行核心的JDBC工作流，如Statement的建立和执行，而我们只需要提供SQL语句和提取结果。<br>Spring源码地址：<a href="https://github.com/spring-projects/spring-framework" target="_blank" rel="noopener">https://github.com/spring-projects/spring-framework</a></p><h3 id="在JdbcTemplate中执行SQL语句的方法大致分为3类："><a href="#在JdbcTemplate中执行SQL语句的方法大致分为3类：" class="headerlink" title="在JdbcTemplate中执行SQL语句的方法大致分为3类："></a>在JdbcTemplate中执行SQL语句的方法大致分为3类：</h3><p>1、execute：可以执行所有SQL语句，一般用于执行DDL语句。<br>2、update：用于执行INSERT、UPDATE、DELETE等DML语句。<br>3、queryXxx：用于DQL数据查询语句。</p><h3 id="添加相关-jar-包"><a href="#添加相关-jar-包" class="headerlink" title="添加相关 jar 包"></a>添加相关 jar 包</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-boot-starter-data-jpa&lt;&#x2F;artifactId&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br><span class="line"> &lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;mysql&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;mysql-connector-java&lt;&#x2F;artifactId&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure><h3 id="添加配置文件"><a href="#添加配置文件" class="headerlink" title="添加配置文件"></a>添加配置文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">spring.datasource.driver-class-name&#x3D;com.mysql.cj.jdbc.Driver</span><br><span class="line">spring.datasource.url&#x3D;jdbc:mysql:&#x2F;&#x2F;localhost:3306&#x2F;springbootmodel?serverTimezone&#x3D;UTC&amp;useUnicode&#x3D;true&amp;characterEncoding&#x3D;utf8</span><br><span class="line">spring.datasource.username&#x3D;root</span><br><span class="line">spring.datasource.password&#x3D;19961105</span><br></pre></td></tr></table></figure><h3 id="JdbcTemplate配置连接池"><a href="#JdbcTemplate配置连接池" class="headerlink" title="JdbcTemplate配置连接池"></a>JdbcTemplate配置连接池</h3><p>org.springframework.jdbc.core.JdbcTemplate类方便执行SQL语句</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public JdbcTemplate(DataSource dataSource)</span><br><span class="line">创建JdbcTemplate对象，方便执行SQL语句</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public void execute(final String sql)</span><br><span class="line">execute可以执行所有SQL语句，因为没有返回值，一般用于执行DDL语句。</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public class GetData &#123;</span><br><span class="line"> @Autowired</span><br><span class="line">JdbcTemplate jdbcTemplate;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;&#x2F;省略调用方法</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="JdbcTemplate实现增删改"><a href="#JdbcTemplate实现增删改" class="headerlink" title="JdbcTemplate实现增删改"></a>JdbcTemplate实现增删改</h3><h4 id="API介绍"><a href="#API介绍" class="headerlink" title="API介绍"></a>API介绍</h4><p>org.springframework.jdbc.core.JdbcTemplate类方便执行SQL语句</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public int update(final String sql)</span><br><span class="line">用于执行&#96;INSERT&#96;、&#96;UPDATE&#96;、&#96;DELETE&#96;等DML语句。</span><br></pre></td></tr></table></figure><h4 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h4><p>1.创建JdbcTemplate对象<br>2.编写SQL语句<br>3.使用JdbcTemplate对象的update方法进行增删改</p><h4 id="案例代码"><a href="#案例代码" class="headerlink" title="案例代码"></a>案例代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">public class Demo05 &#123;</span><br><span class="line">public static void main(String[] args) throws Exception &#123;</span><br><span class="line">&#x2F;&#x2F;test01();</span><br><span class="line">&#x2F;&#x2F;test02();</span><br><span class="line">&#x2F;&#x2F;test03();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; JDBCTemplate添加数据</span><br><span class="line">public static void test01() throws Exception &#123;</span><br><span class="line">JdbcTemplate jdbcTemplate &#x3D; new JdbcTemplate(DataSourceUtils.getDataSource());</span><br><span class="line"></span><br><span class="line">String sql &#x3D; &quot;INSERT INTO product VALUES (NULL, ?, ?);&quot;;</span><br><span class="line"></span><br><span class="line">jdbcTemplate.update(sql, &quot;iPhone3GS&quot;, 3333);</span><br><span class="line">jdbcTemplate.update(sql, &quot;iPhone4&quot;, 5000);</span><br><span class="line">jdbcTemplate.update(sql, &quot;iPhone4S&quot;, 5001);</span><br><span class="line">jdbcTemplate.update(sql, &quot;iPhone5&quot;, 5555);</span><br><span class="line">jdbcTemplate.update(sql, &quot;iPhone5C&quot;, 3888);</span><br><span class="line">jdbcTemplate.update(sql, &quot;iPhone5S&quot;, 5666);</span><br><span class="line">jdbcTemplate.update(sql, &quot;iPhone6&quot;, 6666);</span><br><span class="line">jdbcTemplate.update(sql, &quot;iPhone6S&quot;, 7000);</span><br><span class="line">jdbcTemplate.update(sql, &quot;iPhone6SP&quot;, 7777);</span><br><span class="line">jdbcTemplate.update(sql, &quot;iPhoneX&quot;, 8888);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; JDBCTemplate修改数据</span><br><span class="line">public static void test02() throws Exception &#123;</span><br><span class="line">JdbcTemplate jdbcTemplate &#x3D; new JdbcTemplate(DataSourceUtils.getDataSource());</span><br><span class="line"></span><br><span class="line">String sql &#x3D; &quot;UPDATE product SET pname&#x3D;?, price&#x3D;? WHERE pid&#x3D;?;&quot;;</span><br><span class="line"></span><br><span class="line">int i &#x3D; jdbcTemplate.update(sql, &quot;XVIII&quot;, 18888, 10);</span><br><span class="line">System.out.println(&quot;影响的行数: &quot; + i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; JDBCTemplate删除数据</span><br><span class="line">public static void test03() throws Exception &#123;</span><br><span class="line">JdbcTemplate jdbcTemplate &#x3D; new JdbcTemplate(DataSourceUtils.getDataSource());</span><br><span class="line">String sql &#x3D; &quot;DELETE FROM product WHERE pid&#x3D;?;&quot;;</span><br><span class="line">int i &#x3D; jdbcTemplate.update(sql, 7);</span><br><span class="line">System.out.println(&quot;影响的行数: &quot; + i);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="JdbcTemplate查询-queryForInt返回一个int整数"><a href="#JdbcTemplate查询-queryForInt返回一个int整数" class="headerlink" title="JdbcTemplate查询-queryForInt返回一个int整数"></a>JdbcTemplate查询-queryForInt返回一个int整数</h3><p>org.springframework.jdbc.core.JdbcTemplate类方便执行SQL语句</p><h4 id="API介绍-1"><a href="#API介绍-1" class="headerlink" title="API介绍"></a>API介绍</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public int queryForInt(String sql)</span><br><span class="line">执行查询语句，返回一个int类型的值。</span><br></pre></td></tr></table></figure><h4 id="使用步骤-1"><a href="#使用步骤-1" class="headerlink" title="使用步骤"></a>使用步骤</h4><p>1、创建JdbcTemplate对象<br>2、编写查询的SQL语句<br>3、使用JdbcTemplate对象的queryForInt方法<br>4、输出结果</p><h4 id="案例代码-1"><a href="#案例代码-1" class="headerlink" title="案例代码"></a>案例代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; queryForInt返回一个整数</span><br><span class="line">public static void test01() throws Exception &#123;</span><br><span class="line">   &#x2F;&#x2F; String sql &#x3D; &quot;SELECT COUNT(*) FROM product;&quot;;</span><br><span class="line">   String sql &#x3D; &quot;SELECT pid FROM product WHERE price&#x3D;18888;&quot;;</span><br><span class="line">   JdbcTemplate jdbcTemplate &#x3D; new JdbcTemplate(DataSourceUtils.getDataSource());</span><br><span class="line">   int forInt &#x3D; jdbcTemplate.queryForInt(sql);</span><br><span class="line">   System.out.println(forInt);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="JdbcTemplate查询-queryForLong返回一个long整数"><a href="#JdbcTemplate查询-queryForLong返回一个long整数" class="headerlink" title="JdbcTemplate查询-queryForLong返回一个long整数"></a>JdbcTemplate查询-queryForLong返回一个long整数</h3><h4 id="讲解"><a href="#讲解" class="headerlink" title="讲解"></a>讲解</h4><p>org.springframework.jdbc.core.JdbcTemplate类方便执行SQL语句</p><h4 id="API介绍-2"><a href="#API介绍-2" class="headerlink" title="API介绍"></a>API介绍</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public long queryForLong(String sql)</span><br><span class="line">执行查询语句，返回一个long类型的数据。</span><br></pre></td></tr></table></figure><h4 id="使用步骤-2"><a href="#使用步骤-2" class="headerlink" title="使用步骤"></a>使用步骤</h4><p>1、创建JdbcTemplate对象<br>2、编写查询的SQL语句<br>3、使用JdbcTemplate对象的queryForLong方法<br>4、输出结果</p><h4 id="案例代码-2"><a href="#案例代码-2" class="headerlink" title="案例代码"></a>案例代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; queryForLong  返回一个long类型整数</span><br><span class="line">public static void test02() throws Exception &#123;</span><br><span class="line">   String sql &#x3D; &quot;SELECT COUNT(*) FROM product;&quot;;</span><br><span class="line">   &#x2F;&#x2F; String sql &#x3D; &quot;SELECT pid FROM product WHERE price&#x3D;18888;&quot;;</span><br><span class="line">   JdbcTemplate jdbcTemplate &#x3D; new JdbcTemplate(DataSourceUtils.getDataSource());</span><br><span class="line">   long forLong &#x3D; jdbcTemplate.queryForLong(sql);</span><br><span class="line">   System.out.println(forLong);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="JdbcTemplate查询-queryForObject返回String"><a href="#JdbcTemplate查询-queryForObject返回String" class="headerlink" title="JdbcTemplate查询-queryForObject返回String"></a>JdbcTemplate查询-queryForObject返回String</h3><h4 id="讲解-1"><a href="#讲解-1" class="headerlink" title="讲解"></a>讲解</h4><p>org.springframework.jdbc.core.JdbcTemplate类方便执行SQL语句</p><h4 id="API介绍-3"><a href="#API介绍-3" class="headerlink" title="API介绍"></a>API介绍</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public &lt;T&gt; T queryForObject(String sql, Class&lt;T&gt; requiredType)</span><br><span class="line">执行查询语句，返回一个指定类型的数据。</span><br></pre></td></tr></table></figure><h4 id="使用步骤-3"><a href="#使用步骤-3" class="headerlink" title="使用步骤"></a>使用步骤</h4><p>1、创建JdbcTemplate对象<br>2、编写查询的SQL语句<br>3、使用JdbcTemplate对象的queryForObject方法，并传入需要返回的数据的类型<br>4、输出结果</p><h4 id="案例代码-3"><a href="#案例代码-3" class="headerlink" title="案例代码"></a>案例代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public static void test03() throws Exception &#123;</span><br><span class="line">   String sql &#x3D; &quot;SELECT pname FROM product WHERE price&#x3D;7777;&quot;;</span><br><span class="line">   JdbcTemplate jdbcTemplate &#x3D; new JdbcTemplate(DataSourceUtils.getDataSource());</span><br><span class="line">   String str &#x3D; jdbcTemplate.queryForObject(sql, String.class);</span><br><span class="line">   System.out.println(str);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="JdbcTemplate查询-queryForMap返回一个Map集合"><a href="#JdbcTemplate查询-queryForMap返回一个Map集合" class="headerlink" title="JdbcTemplate查询-queryForMap返回一个Map集合"></a>JdbcTemplate查询-queryForMap返回一个Map集合</h3><h4 id="API介绍-4"><a href="#API介绍-4" class="headerlink" title="API介绍"></a>API介绍</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public Map&lt;String, Object&gt; queryForMap(String sql)</span><br><span class="line">执行查询语句，将一条记录放到一个Map中。</span><br></pre></td></tr></table></figure><h4 id="使用步骤-4"><a href="#使用步骤-4" class="headerlink" title="使用步骤"></a>使用步骤</h4><p>1、创建JdbcTemplate对象<br>2、编写查询的SQL语句<br>3、使用JdbcTemplate对象的queryForMap方法<br>4、处理结果</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public static void test04() throws Exception &#123;</span><br><span class="line">   String sql &#x3D; &quot;SELECT * FROM product WHERE pid&#x3D;?;&quot;;</span><br><span class="line">   JdbcTemplate jdbcTemplate &#x3D; new JdbcTemplate(DataSourceUtils.getDataSource());</span><br><span class="line">   Map&lt;String, Object&gt; map &#x3D; jdbcTemplate.queryForMap(sql, 6);</span><br><span class="line">   System.out.println(map);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="JdbcTemplate查询-queryForList返回一个List集合"><a href="#JdbcTemplate查询-queryForList返回一个List集合" class="headerlink" title="JdbcTemplate查询-queryForList返回一个List集合"></a>JdbcTemplate查询-queryForList返回一个List集合</h3><h4 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h4><p>能够掌握JdbcTemplate中queryForList方法的使用</p><h4 id="讲解-2"><a href="#讲解-2" class="headerlink" title="讲解"></a>讲解</h4><p>org.springframework.jdbc.core.JdbcTemplate类方便执行SQL语句</p><h4 id="API介绍-5"><a href="#API介绍-5" class="headerlink" title="API介绍"></a>API介绍</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public List&lt;Map&lt;String, Object&gt;&gt; queryForList(String sql)</span><br><span class="line">执行查询语句，返回一个List集合，List中存放的是Map类型的数据。</span><br></pre></td></tr></table></figure><h4 id="使用步骤-5"><a href="#使用步骤-5" class="headerlink" title="使用步骤"></a>使用步骤</h4><p>1、创建JdbcTemplate对象<br>2、编写查询的SQL语句<br>3、使用JdbcTemplate对象的queryForList方法<br>4、处理结果</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public static void test05() throws Exception &#123;</span><br><span class="line">   String sql &#x3D; &quot;SELECT * FROM product WHERE pid&lt;?;&quot;;</span><br><span class="line">   JdbcTemplate jdbcTemplate &#x3D; new JdbcTemplate(DataSourceUtils.getDataSource());</span><br><span class="line">   List&lt;Map&lt;String, Object&gt;&gt; list &#x3D; jdbcTemplate.queryForList(sql, 8);</span><br><span class="line">   for (Map&lt;String, Object&gt; map : list) &#123;</span><br><span class="line">      System.out.println(map);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>queryForList方法的作用？将返回的一条记录保存在Map集合中，多条记录对应多个Map，多个Map存储到List集合中</p><h3 id="JdbcTemplate查询-RowMapper返回自定义对象"><a href="#JdbcTemplate查询-RowMapper返回自定义对象" class="headerlink" title="JdbcTemplate查询-RowMapper返回自定义对象"></a>JdbcTemplate查询-RowMapper返回自定义对象</h3><p>org.springframework.jdbc.core.JdbcTemplate类方便执行SQL语句</p><h4 id="API介绍-6"><a href="#API介绍-6" class="headerlink" title="API介绍"></a>API介绍</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public &lt;T&gt; List&lt;T&gt; query(String sql, RowMapper&lt;T&gt; rowMapper)</span><br><span class="line">执行查询语句，返回一个List集合，List中存放的是RowMapper指定类型的数据。</span><br></pre></td></tr></table></figure><h4 id="使用步骤-6"><a href="#使用步骤-6" class="headerlink" title="使用步骤"></a>使用步骤</h4><p>1、定义Product类<br>2、创建JdbcTemplate对象<br>3、编写查询的SQL语句<br>4、使用JdbcTemplate对象的query方法，并传入RowMapper匿名内部类<br>5、在匿名内部类中将结果集中的一行记录转成一个Product对象</p><h4 id="案例代码-4"><a href="#案例代码-4" class="headerlink" title="案例代码"></a>案例代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; query使用rowMap做映射返回一个对象</span><br><span class="line">public static void test06() throws Exception &#123;</span><br><span class="line">    JdbcTemplate jdbcTemplate &#x3D; new JdbcTemplate(DataSourceUtils.getDataSource());</span><br><span class="line"></span><br><span class="line">   &#x2F;&#x2F; 查询数据的SQL语句</span><br><span class="line">   String sql &#x3D; &quot;SELECT * FROM product;&quot;;</span><br><span class="line"></span><br><span class="line">   List&lt;Product&gt; query &#x3D; jdbcTemplate.query(sql, new RowMapper&lt;Product&gt;() &#123;</span><br><span class="line">      @Override</span><br><span class="line">      public Product mapRow(ResultSet arg0, int arg1) throws SQLException &#123;</span><br><span class="line">         Product p &#x3D; new Product();</span><br><span class="line">         p.setPid(arg0.getInt(&quot;pid&quot;));</span><br><span class="line">         p.setPname(arg0.getString(&quot;pname&quot;));</span><br><span class="line">         p.setPrice(arg0.getDouble(&quot;price&quot;));</span><br><span class="line">         return p;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;);</span><br><span class="line"></span><br><span class="line">   for (Product product : query) &#123;</span><br><span class="line">      System.out.println(product);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>使用JdbcTemplate对象的query方法，并传入RowMapper匿名内部类<br>在匿名内部类中将结果集中的一行记录转成一个Product对象</p><h3 id="JdbcTemplate查询-BeanPropertyRowMapper返回自定义对象"><a href="#JdbcTemplate查询-BeanPropertyRowMapper返回自定义对象" class="headerlink" title="JdbcTemplate查询-BeanPropertyRowMapper返回自定义对象"></a>JdbcTemplate查询-BeanPropertyRowMapper返回自定义对象</h3><p>org.springframework.jdbc.core.JdbcTemplate类方便执行SQL语句</p><h4 id="API介绍-7"><a href="#API介绍-7" class="headerlink" title="API介绍"></a>API介绍</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public &lt;T&gt; List&lt;T&gt; query(String sql, RowMapper&lt;T&gt; rowMapper)</span><br><span class="line">执行查询语句，返回一个List集合，List中存放的是RowMapper指定类型的数据。</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public class BeanPropertyRowMapper&lt;T&gt; implements RowMapper&lt;T&gt;</span><br><span class="line">BeanPropertyRowMapper类实现了RowMapper接口</span><br></pre></td></tr></table></figure><h4 id="使用步骤-7"><a href="#使用步骤-7" class="headerlink" title="使用步骤"></a>使用步骤</h4><p>1、定义Product类<br>2、创建JdbcTemplate对象<br>3、编写查询的SQL语句<br>4、使用JdbcTemplate对象的query方法，并传入BeanPropertyRowMapper对象</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; query使用BeanPropertyRowMapper做映射返回对象</span><br><span class="line">public static void test07() throws Exception &#123;</span><br><span class="line">JdbcTemplate jdbcTemplate &#x3D; new JdbcTemplate(DataSourceUtils.getDataSource());</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 查询数据的SQL语句</span><br><span class="line">String sql &#x3D; &quot;SELECT * FROM product;&quot;;</span><br><span class="line">List&lt;Product&gt; list &#x3D; jdbcTemplate.query(sql, new BeanPropertyRowMapper&lt;&gt;(Product.class));</span><br><span class="line"></span><br><span class="line">for (Product product : list) &#123;</span><br><span class="line">System.out.println(product);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
       <categories>
-        <category>IIS</category>
+          
+          <category> JAVA </category>
+          
       </categories>
-  </entry>
-  <entry>
-    <title>hexo在文章中添加图片</title>
-    <url>/2020/06/24/hexo%E5%9C%A8%E6%96%87%E7%AB%A0%E4%B8%AD%E6%B7%BB%E5%8A%A0%E5%9B%BE%E7%89%87/</url>
-    <content><![CDATA[<h2 id="hexo-添加图片插件"><a href="#hexo-添加图片插件" class="headerlink" title="hexo 添加图片插件"></a>hexo 添加图片插件</h2><p>安装图片插件</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-asset-image --save</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2020/06/24/hexo%E5%9C%A8%E6%96%87%E7%AB%A0%E4%B8%AD%E6%B7%BB%E5%8A%A0%E5%9B%BE%E7%89%87/img1.png" alt></p>
-<p>在_config.yml配置文件中，修改为 post_asset_folder: true， 然后新建一篇文章</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new post ceshi</span><br></pre></td></tr></table></figure>
-
-<p>这个时候会在_posts文件夹下多出一个与文章同名文件夹，可以将当前文章用到的图片放在此文件夹下</p>
-<p><img src="/2020/06/24/hexo%E5%9C%A8%E6%96%87%E7%AB%A0%E4%B8%AD%E6%B7%BB%E5%8A%A0%E5%9B%BE%E7%89%87/img2.png" alt></p>
-<h3 id="hexo-关于图片路径不能访问"><a href="#hexo-关于图片路径不能访问" class="headerlink" title="hexo 关于图片路径不能访问"></a>hexo 关于图片路径不能访问</h3><p>通常图片路径为：<img src="/2020/06/24/hexo%E5%9C%A8%E6%96%87%E7%AB%A0%E4%B8%AD%E6%B7%BB%E5%8A%A0%E5%9B%BE%E7%89%87/img3.png" alt>  在Github中的hexo可以查看仓库路径来修改</p>
-]]></content>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Redis下载及安装(windows版)</title>
+      <link href="/2020/08/29/Redis%E4%B8%8B%E8%BD%BD%E5%8F%8A%E5%AE%89%E8%A3%85-windows%E7%89%88/"/>
+      <url>/2020/08/29/Redis%E4%B8%8B%E8%BD%BD%E5%8F%8A%E5%AE%89%E8%A3%85-windows%E7%89%88/</url>
+      
+        <content type="html"><![CDATA[<p>下载地址<br>1、Github下载地址：<a href="https://github.com/MicrosoftArchive/redis/releases" target="_blank" rel="noopener">https://github.com/MicrosoftArchive/redis/releases</a><br>2、百度网盘下载地址 <a href="https://pan.baidu.com/s/1z1_OdNVbtgyEjiktqgB83g" target="_blank" rel="noopener">https://pan.baidu.com/s/1z1_OdNVbtgyEjiktqgB83g</a> 密码：kdfq</p><p>安装过程<br>1.首先先把下载的压缩包解压到一个文件夹中</p><p><img src="/2020/08/29/Redis%E4%B8%8B%E8%BD%BD%E5%8F%8A%E5%AE%89%E8%A3%85-windows%E7%89%88/img1.png" alt></p><p>2.打开cmd指令窗口<br>3.输入你刚才解压的文件路径<br>4.然后输入redis-server redis.windows.conf 命令</p><p><img src="/2020/08/29/Redis%E4%B8%8B%E8%BD%BD%E5%8F%8A%E5%AE%89%E8%A3%85-windows%E7%89%88/img2.png" alt></p><p>接下来部署Redis为windows下的服务 首先关掉上一个窗口再打开一个新的cmd命令窗口</p><p>然后输入指令redis-server –service-install redis.windows.conf</p><p><img src="/2020/08/29/Redis%E4%B8%8B%E8%BD%BD%E5%8F%8A%E5%AE%89%E8%A3%85-windows%E7%89%88/img3.png" alt></p><p>随后,进入右击此电脑–管理–服务和应用程序–服务 启动服务</p><p><img src="/2020/08/29/Redis%E4%B8%8B%E8%BD%BD%E5%8F%8A%E5%AE%89%E8%A3%85-windows%E7%89%88/img4.png" alt></p><p>Redis常用的指令<br>卸载服务：redis-server –service-uninstall<br>开启服务：redis-server –service-start<br>停止服务：redis-server –service-stop<br>测试redis,通过cd到我们解压的目录,输入指令通过Set get指令查看是否成功</p><p><img src="/2020/08/29/Redis%E4%B8%8B%E8%BD%BD%E5%8F%8A%E5%AE%89%E8%A3%85-windows%E7%89%88/img5.png" alt></p>]]></content>
+      
+      
       <categories>
-        <category>Github</category>
+          
+          <category> Redis </category>
+          
       </categories>
-  </entry>
-  <entry>
-    <title>Redis下载及安装(windows版)</title>
-    <url>/2020/08/29/Redis%E4%B8%8B%E8%BD%BD%E5%8F%8A%E5%AE%89%E8%A3%85-windows%E7%89%88/</url>
-    <content><![CDATA[<p>下载地址<br>1、Github下载地址：<a href="https://github.com/MicrosoftArchive/redis/releases" target="_blank" rel="noopener">https://github.com/MicrosoftArchive/redis/releases</a><br>2、百度网盘下载地址 <a href="https://pan.baidu.com/s/1z1_OdNVbtgyEjiktqgB83g" target="_blank" rel="noopener">https://pan.baidu.com/s/1z1_OdNVbtgyEjiktqgB83g</a> 密码：kdfq</p>
-<p>安装过程<br>1.首先先把下载的压缩包解压到一个文件夹中</p>
-<p><img src="/2020/08/29/Redis%E4%B8%8B%E8%BD%BD%E5%8F%8A%E5%AE%89%E8%A3%85-windows%E7%89%88/img1.png" alt></p>
-<p>2.打开cmd指令窗口<br>3.输入你刚才解压的文件路径<br>4.然后输入redis-server redis.windows.conf 命令</p>
-<p><img src="/2020/08/29/Redis%E4%B8%8B%E8%BD%BD%E5%8F%8A%E5%AE%89%E8%A3%85-windows%E7%89%88/img2.png" alt></p>
-<p>接下来部署Redis为windows下的服务 首先关掉上一个窗口再打开一个新的cmd命令窗口</p>
-<p>然后输入指令redis-server –service-install redis.windows.conf</p>
-<p><img src="/2020/08/29/Redis%E4%B8%8B%E8%BD%BD%E5%8F%8A%E5%AE%89%E8%A3%85-windows%E7%89%88/img3.png" alt></p>
-<p>随后,进入右击此电脑–管理–服务和应用程序–服务 启动服务</p>
-<p><img src="/2020/08/29/Redis%E4%B8%8B%E8%BD%BD%E5%8F%8A%E5%AE%89%E8%A3%85-windows%E7%89%88/img4.png" alt></p>
-<p>Redis常用的指令<br>卸载服务：redis-server –service-uninstall<br>开启服务：redis-server –service-start<br>停止服务：redis-server –service-stop<br>测试redis,通过cd到我们解压的目录,输入指令通过Set get指令查看是否成功</p>
-<p><img src="/2020/08/29/Redis%E4%B8%8B%E8%BD%BD%E5%8F%8A%E5%AE%89%E8%A3%85-windows%E7%89%88/img5.png" alt></p>
-]]></content>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>mysql5.7运行sql文件报错</title>
+      <link href="/2020/08/29/mysql5-7%E8%BF%90%E8%A1%8Csql%E6%96%87%E4%BB%B6%E6%8A%A5%E9%94%99/"/>
+      <url>/2020/08/29/mysql5-7%E8%BF%90%E8%A1%8Csql%E6%96%87%E4%BB%B6%E6%8A%A5%E9%94%99/</url>
+      
+        <content type="html"><![CDATA[<h3 id="mysql5-7运行sql文件报错"><a href="#mysql5-7运行sql文件报错" class="headerlink" title="mysql5.7运行sql文件报错"></a>mysql5.7运行sql文件报错</h3><h4 id="ERR-1273-Unknown-collation-‘utf8mb4-0900-ai-ci’"><a href="#ERR-1273-Unknown-collation-‘utf8mb4-0900-ai-ci’" class="headerlink" title="[ERR] 1273 - Unknown collation: ‘utf8mb4_0900_ai_ci’"></a>[ERR] 1273 - Unknown collation: ‘utf8mb4_0900_ai_ci’</h4><p>报错原因：<br>生成转储文件的数据库版本为8.0,要导入sql文件的数据库版本为5.6,因为是高版本导入到低版本，引起1273错误</p><p>解决方法：<br>打开sql文件，将文件中的所有<br>utf8mb4_0900_ai_ci替换为utf8_general_ci<br>utf8mb4替换为utf8<br>保存后再次运行sql文件，运行成功</p><h3 id="在Navicat-查询的界面-使用Ctrl-F-唤出-查找功能-勾选-替换-进行替换"><a href="#在Navicat-查询的界面-使用Ctrl-F-唤出-查找功能-勾选-替换-进行替换" class="headerlink" title="在Navicat 查询的界面 使用Ctrl + F 唤出 查找功能 勾选  替换 进行替换"></a>在Navicat 查询的界面 使用Ctrl + F 唤出 查找功能 勾选  替换 进行替换</h3><p><img src="/2020/08/29/mysql5-7%E8%BF%90%E8%A1%8Csql%E6%96%87%E4%BB%B6%E6%8A%A5%E9%94%99/img1.png" alt></p>]]></content>
+      
+      
       <categories>
-        <category>Redis</category>
+          
+          <category> MySql </category>
+          
       </categories>
-  </entry>
-  <entry>
-    <title>springboot读取自定义properties配置文件方法</title>
-    <url>/2020/08/26/springboot%E8%AF%BB%E5%8F%96%E8%87%AA%E5%AE%9A%E4%B9%89properties%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%96%B9%E6%B3%95/</url>
-    <content><![CDATA[<h2 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h2><h3 id="1-添加pom-xml依赖"><a href="#1-添加pom-xml依赖" class="headerlink" title="1. 添加pom.xml依赖"></a>1. 添加pom.xml依赖</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!-- springboot configuration依赖 --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;</span><br><span class="line">      &lt;artifactId&gt; spring-boot-configuration-processor&lt;&#x2F;artifactId&gt;</span><br><span class="line">      &lt;optional&gt; true &lt;&#x2F;optional&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-在resources下建一个config包-当然包名随意-在包里建一个application-properties-文件名随意"><a href="#2-在resources下建一个config包-当然包名随意-在包里建一个application-properties-文件名随意" class="headerlink" title="2. 在resources下建一个config包(当然包名随意), 在包里建一个application.properties(文件名随意)"></a>2. 在resources下建一个config包(当然包名随意), 在包里建一个application.properties(文件名随意)</h3><p><img src="/2020/08/26/springboot%E8%AF%BB%E5%8F%96%E8%87%AA%E5%AE%9A%E4%B9%89properties%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%96%B9%E6%B3%95/img1.png" alt></p>
-<h3 id="3-在配置文件中写入测试内容"><a href="#3-在配置文件中写入测试内容" class="headerlink" title="3. 在配置文件中写入测试内容"></a>3. 在配置文件中写入测试内容</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">remote.title&#x3D;纯洁的微笑</span><br><span class="line">remote.description&#x3D;分享生活和技术</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-写一个实体类-属性和配置文件对应"><a href="#4-写一个实体类-属性和配置文件对应" class="headerlink" title="4. 写一个实体类, 属性和配置文件对应"></a>4. 写一个实体类, 属性和配置文件对应</h3><p><img src="/2020/08/26/springboot%E8%AF%BB%E5%8F%96%E8%87%AA%E5%AE%9A%E4%B9%89properties%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%96%B9%E6%B3%95/img2.png" alt></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import lombok.Data;</span><br><span class="line">import org.springframework.boot.context.properties.ConfigurationProperties;</span><br><span class="line">import org.springframework.context.annotation.Configuration;</span><br><span class="line">import org.springframework.context.annotation.PropertySource;</span><br><span class="line">import org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line">@Configuration</span><br><span class="line">@ConfigurationProperties(prefix &#x3D; &quot;remote&quot; ,ignoreUnknownFields &#x3D; false)</span><br><span class="line">@PropertySource(&quot;classpath:config&#x2F;application.properties&quot;)</span><br><span class="line">@Data</span><br><span class="line">@Component</span><br><span class="line">public class RemoteProperties &#123;</span><br><span class="line">    private String title;</span><br><span class="line">    private String description;</span><br><span class="line"></span><br><span class="line">    public String getTitle()&#123;</span><br><span class="line">        return title;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getDescription()&#123;</span><br><span class="line">        return  description;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="5-调用配置文件信息的类"><a href="#5-调用配置文件信息的类" class="headerlink" title="5. 调用配置文件信息的类"></a>5. 调用配置文件信息的类</h3><p><img src="/2020/08/26/springboot%E8%AF%BB%E5%8F%96%E8%87%AA%E5%AE%9A%E4%B9%89properties%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%96%B9%E6%B3%95/img3.png" alt></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.boot.context.properties.EnableConfigurationProperties;</span><br><span class="line">import org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line">import org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line">@EnableConfigurationProperties(RemoteProperties.class)</span><br><span class="line">@RestController</span><br><span class="line">public class PageResultController &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    RemoteProperties remoteProperties;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(&quot;&#x2F;indexMap&quot;)</span><br><span class="line">    public String index()&#123;</span><br><span class="line">        return &quot;标题&quot;+remoteProperties.getTitle()+&quot;说明&quot;+remoteProperties.getDescription();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="方法二："><a href="#方法二：" class="headerlink" title="方法二："></a>方法二：</h2><p><img src="/2020/08/26/springboot%E8%AF%BB%E5%8F%96%E8%87%AA%E5%AE%9A%E4%B9%89properties%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%96%B9%E6%B3%95/img4.png" alt></p>
-]]></content>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>JavaSE如何安装JDK以及配置Java运行环境</title>
+      <link href="/2020/08/28/%E3%80%90Java-SE%E3%80%91%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85JDK%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AEJava%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/"/>
+      <url>/2020/08/28/%E3%80%90Java-SE%E3%80%91%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85JDK%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AEJava%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/</url>
+      
+        <content type="html"><![CDATA[<h4 id="摘要：不管是作为苦逼的Java码农，还是高端大气的Java系统架构师，如果不会安装JDK以及配置Java运行环境，那就巧妇难为无米之炊，不能进行Java后续的代码编写。当然如果你是Myeclipse编译器的爱好者，你就可以直接点击右上角的×，然后在心里给我一个大大的鄙视就好了。如果你使用的是dos黑框编译Java代码，那么希望接下来的内容能带你进入Java的新世界。"><a href="#摘要：不管是作为苦逼的Java码农，还是高端大气的Java系统架构师，如果不会安装JDK以及配置Java运行环境，那就巧妇难为无米之炊，不能进行Java后续的代码编写。当然如果你是Myeclipse编译器的爱好者，你就可以直接点击右上角的×，然后在心里给我一个大大的鄙视就好了。如果你使用的是dos黑框编译Java代码，那么希望接下来的内容能带你进入Java的新世界。" class="headerlink" title="摘要：不管是作为苦逼的Java码农，还是高端大气的Java系统架构师，如果不会安装JDK以及配置Java运行环境，那就巧妇难为无米之炊，不能进行Java后续的代码编写。当然如果你是Myeclipse编译器的爱好者，你就可以直接点击右上角的×，然后在心里给我一个大大的鄙视就好了。如果你使用的是dos黑框编译Java代码，那么希望接下来的内容能带你进入Java的新世界。"></a>摘要：不管是作为苦逼的Java码农，还是高端大气的Java系统架构师，如果不会安装JDK以及配置Java运行环境，那就巧妇难为无米之炊，不能进行Java后续的代码编写。当然如果你是Myeclipse编译器的爱好者，你就可以直接点击右上角的×，然后在心里给我一个大大的鄙视就好了。如果你使用的是dos黑框编译Java代码，那么希望接下来的内容能带你进入Java的新世界。</h4><p>1.JDK下载地址：<a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</a>.</p><p><img src="/2020/08/28/%E3%80%90Java-SE%E3%80%91%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85JDK%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AEJava%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/img1.png" alt></p><p>2.点击Accept License Agreement，下载适合自己电脑版本的JDK.由于我的电脑是windows10 64位专业版，所以我选择的是最后一个。<br><img src="/2020/08/28/%E3%80%90Java-SE%E3%80%91%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85JDK%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AEJava%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/img2.png" alt><br> 点击红色下载按钮。保存位置自己决定，只要自己安装时能找到就行。</p><p>3.找到安装文件，双击。<br><img src="/2020/08/28/%E3%80%90Java-SE%E3%80%91%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85JDK%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AEJava%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/img3.png" alt></p><p>4.下一步，这里会让你选择安装目录。<br>注意：最好不要选择源安装目录，因为你发现Program Files中间含有空格，以后编译java软件可能会发生错误，一时半会都找不到问题出在哪里，所以防患于未然，这里建议安装到其他目录上面。我个人是选择在D盘新建一个文件给他叫做Java，打开Java文件夹，在里面新建两个文件夹，一个叫jdk，一个叫jre.</p><p><img src="/2020/08/28/%E3%80%90Java-SE%E3%80%91%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85JDK%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AEJava%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/img4.png" alt></p><p>5.回到原来的安装界面，更改安装目录到刚刚新建的那个jdk文件下。点击下一步。</p><p><img src="/2020/08/28/%E3%80%90Java-SE%E3%80%91%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85JDK%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AEJava%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/img5.png" alt></p><p>6.安装完jdk之后，会弹出jre的安装界面。这里选择安装路径到新建的jre文件夹下面。</p><p><img src="/2020/08/28/%E3%80%90Java-SE%E3%80%91%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85JDK%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AEJava%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/img6.png" alt></p><p>7.点击下一步。之后jdk和jre都安装成功。点击关闭。</p><p><img src="/2020/08/28/%E3%80%90Java-SE%E3%80%91%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85JDK%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AEJava%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/img7.png" alt></p><p>8.测试jdk是否安装成功。这里教大家一个快捷键。windows+R打开运行界面。输入cmd打开dos系统。</p><p><img src="/2020/08/28/%E3%80%90Java-SE%E3%80%91%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85JDK%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AEJava%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/img8.png" alt></p><p>9.点击运行。输入java。如果显示下面内容就表示安装成功。</p><p><img src="/2020/08/28/%E3%80%90Java-SE%E3%80%91%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85JDK%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AEJava%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/img9.png" alt></p><p>10.但是当你输入javac的时候，会显示这个。这是因为你还没有配置java运行环境，接下来教你们怎么配置java运行环境，配置完运行环境就能使用完整的java了。</p><p><img src="/2020/08/28/%E3%80%90Java-SE%E3%80%91%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85JDK%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AEJava%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/img10.png" alt></p><p>11.右键电脑属性，打开高级系统设置。</p><p><img src="/2020/08/28/%E3%80%90Java-SE%E3%80%91%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85JDK%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AEJava%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/img11.png" alt></p><p>12.点击高级，再点击环境变量。</p><p><img src="/2020/08/28/%E3%80%90Java-SE%E3%80%91%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85JDK%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AEJava%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/img12.png" alt></p><p>13.新建系统变量JAVA_HOME，变量值填D:\Java\jdk，（这是我的jdk的安装路径，你们安装在其他盘的找到jdk的安装路径复制进去就行）</p><p><img src="/2020/08/28/%E3%80%90Java-SE%E3%80%91%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85JDK%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AEJava%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/img13.png" alt></p><p>14.找到自己系统变量里的Path,双击，找到编辑文本点击，在变量值的最后添加   ;%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin</p><p><img src="/2020/08/28/%E3%80%90Java-SE%E3%80%91%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85JDK%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AEJava%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/img14.png" alt></p><p>15.新建系统变量CLASSPATH，变量值填  .;%JAVA_HOME%\lib;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar（注意这个变量值前面还有一个点，代表从当前路径）</p><p><img src="/2020/08/28/%E3%80%90Java-SE%E3%80%91%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85JDK%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AEJava%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/img15.png" alt></p><p>16.点击确定，这时来测试以下javac能不能用，windows+R键打开运行，输入cmd，打开dos系统，输入javac.</p><p><img src="/2020/08/28/%E3%80%90Java-SE%E3%80%91%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85JDK%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AEJava%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/img16.png" alt></p><p>17.到此为止，jdk的安装以及java运行环境已经全部完成了，使用IDEA的同学可以开始自己的编程之旅了，如果在配置环境变量之中遇到任何问题，欢迎在评论区留言。</p>]]></content>
+      
+      
       <categories>
-        <category>SpringBoot</category>
+          
+          <category> JAVA </category>
+          
       </categories>
-      <tags>
-        <tag>properties配置文件</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>mysql5.7运行sql文件报错</title>
-    <url>/2020/08/29/mysql5-7%E8%BF%90%E8%A1%8Csql%E6%96%87%E4%BB%B6%E6%8A%A5%E9%94%99/</url>
-    <content><![CDATA[<h3 id="mysql5-7运行sql文件报错"><a href="#mysql5-7运行sql文件报错" class="headerlink" title="mysql5.7运行sql文件报错"></a>mysql5.7运行sql文件报错</h3><h4 id="ERR-1273-Unknown-collation-‘utf8mb4-0900-ai-ci’"><a href="#ERR-1273-Unknown-collation-‘utf8mb4-0900-ai-ci’" class="headerlink" title="[ERR] 1273 - Unknown collation: ‘utf8mb4_0900_ai_ci’"></a>[ERR] 1273 - Unknown collation: ‘utf8mb4_0900_ai_ci’</h4><p>报错原因：<br>生成转储文件的数据库版本为8.0,要导入sql文件的数据库版本为5.6,因为是高版本导入到低版本，引起1273错误</p>
-<p>解决方法：<br>打开sql文件，将文件中的所有<br>utf8mb4_0900_ai_ci替换为utf8_general_ci<br>utf8mb4替换为utf8<br>保存后再次运行sql文件，运行成功</p>
-<h3 id="在Navicat-查询的界面-使用Ctrl-F-唤出-查找功能-勾选-替换-进行替换"><a href="#在Navicat-查询的界面-使用Ctrl-F-唤出-查找功能-勾选-替换-进行替换" class="headerlink" title="在Navicat 查询的界面 使用Ctrl + F 唤出 查找功能 勾选  替换 进行替换"></a>在Navicat 查询的界面 使用Ctrl + F 唤出 查找功能 勾选  替换 进行替换</h3><p><img src="/2020/08/29/mysql5-7%E8%BF%90%E8%A1%8Csql%E6%96%87%E4%BB%B6%E6%8A%A5%E9%94%99/img1.png" alt></p>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> 配置Java运行环境 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>解决服务器上运行安装程序，无反应的问题</title>
+      <link href="/2020/08/28/%E8%A7%A3%E5%86%B3%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E8%BF%90%E8%A1%8C%E5%AE%89%E8%A3%85%E7%A8%8B%E5%BA%8F%EF%BC%8C%E6%97%A0%E5%8F%8D%E5%BA%94%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+      <url>/2020/08/28/%E8%A7%A3%E5%86%B3%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E8%BF%90%E8%A1%8C%E5%AE%89%E8%A3%85%E7%A8%8B%E5%BA%8F%EF%BC%8C%E6%97%A0%E5%8F%8D%E5%BA%94%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+      
+        <content type="html"><![CDATA[<h3 id="解决方案其中的一种"><a href="#解决方案其中的一种" class="headerlink" title="解决方案其中的一种"></a>解决方案其中的一种</h3><p>将当前用户变量这里的TMP和TEMP两个参数删除掉，重启服务器，重新运行安装程序，成功！</p>]]></content>
+      
+      
       <categories>
-        <category>MySql</category>
+          
+          <category> 服务器 </category>
+          
       </categories>
-  </entry>
-  <entry>
-    <title>自建Github博客通过域名的访问</title>
-    <url>/2020/06/24/%E8%87%AA%E5%BB%BAGithub%E5%8D%9A%E5%AE%A2%E9%80%9A%E8%BF%87%E5%9F%9F%E5%90%8D%E7%9A%84%E8%AE%BF%E9%97%AE/</url>
-    <content><![CDATA[<p>我们在项目或者博客上传到Github的时候会出现域名不能访问自建页面的情况，检查仓库名称与配置名称是否一致，仓库名称格式为xxx.github.io(xxx为你的用户名)<br><img src="/2020/06/24/%E8%87%AA%E5%BB%BAGithub%E5%8D%9A%E5%AE%A2%E9%80%9A%E8%BF%87%E5%9F%9F%E5%90%8D%E7%9A%84%E8%AE%BF%E9%97%AE/img1.png" alt><br><img src="/2020/06/24/%E8%87%AA%E5%BB%BAGithub%E5%8D%9A%E5%AE%A2%E9%80%9A%E8%BF%87%E5%9F%9F%E5%90%8D%E7%9A%84%E8%AE%BF%E9%97%AE/img2.png" alt><br>再通过配置指定域名来访问，域名指向你的仓库地址</p>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> 阿里云服务器Windows Server 2008 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>springboot读取自定义properties配置文件方法</title>
+      <link href="/2020/08/26/springboot%E8%AF%BB%E5%8F%96%E8%87%AA%E5%AE%9A%E4%B9%89properties%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%96%B9%E6%B3%95/"/>
+      <url>/2020/08/26/springboot%E8%AF%BB%E5%8F%96%E8%87%AA%E5%AE%9A%E4%B9%89properties%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%96%B9%E6%B3%95/</url>
+      
+        <content type="html"><![CDATA[<h2 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h2><h3 id="1-添加pom-xml依赖"><a href="#1-添加pom-xml依赖" class="headerlink" title="1. 添加pom.xml依赖"></a>1. 添加pom.xml依赖</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- springboot configuration依赖 --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;</span><br><span class="line">      &lt;artifactId&gt; spring-boot-configuration-processor&lt;&#x2F;artifactId&gt;</span><br><span class="line">      &lt;optional&gt; true &lt;&#x2F;optional&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure><h3 id="2-在resources下建一个config包-当然包名随意-在包里建一个application-properties-文件名随意"><a href="#2-在resources下建一个config包-当然包名随意-在包里建一个application-properties-文件名随意" class="headerlink" title="2. 在resources下建一个config包(当然包名随意), 在包里建一个application.properties(文件名随意)"></a>2. 在resources下建一个config包(当然包名随意), 在包里建一个application.properties(文件名随意)</h3><p><img src="/2020/08/26/springboot%E8%AF%BB%E5%8F%96%E8%87%AA%E5%AE%9A%E4%B9%89properties%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%96%B9%E6%B3%95/img1.png" alt></p><h3 id="3-在配置文件中写入测试内容"><a href="#3-在配置文件中写入测试内容" class="headerlink" title="3. 在配置文件中写入测试内容"></a>3. 在配置文件中写入测试内容</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">remote.title&#x3D;纯洁的微笑</span><br><span class="line">remote.description&#x3D;分享生活和技术</span><br></pre></td></tr></table></figure><h3 id="4-写一个实体类-属性和配置文件对应"><a href="#4-写一个实体类-属性和配置文件对应" class="headerlink" title="4. 写一个实体类, 属性和配置文件对应"></a>4. 写一个实体类, 属性和配置文件对应</h3><p><img src="/2020/08/26/springboot%E8%AF%BB%E5%8F%96%E8%87%AA%E5%AE%9A%E4%B9%89properties%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%96%B9%E6%B3%95/img2.png" alt></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">import lombok.Data;</span><br><span class="line">import org.springframework.boot.context.properties.ConfigurationProperties;</span><br><span class="line">import org.springframework.context.annotation.Configuration;</span><br><span class="line">import org.springframework.context.annotation.PropertySource;</span><br><span class="line">import org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line">@Configuration</span><br><span class="line">@ConfigurationProperties(prefix &#x3D; &quot;remote&quot; ,ignoreUnknownFields &#x3D; false)</span><br><span class="line">@PropertySource(&quot;classpath:config&#x2F;application.properties&quot;)</span><br><span class="line">@Data</span><br><span class="line">@Component</span><br><span class="line">public class RemoteProperties &#123;</span><br><span class="line">    private String title;</span><br><span class="line">    private String description;</span><br><span class="line"></span><br><span class="line">    public String getTitle()&#123;</span><br><span class="line">        return title;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getDescription()&#123;</span><br><span class="line">        return  description;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="5-调用配置文件信息的类"><a href="#5-调用配置文件信息的类" class="headerlink" title="5. 调用配置文件信息的类"></a>5. 调用配置文件信息的类</h3><p><img src="/2020/08/26/springboot%E8%AF%BB%E5%8F%96%E8%87%AA%E5%AE%9A%E4%B9%89properties%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%96%B9%E6%B3%95/img3.png" alt></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.boot.context.properties.EnableConfigurationProperties;</span><br><span class="line">import org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line">import org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line">@EnableConfigurationProperties(RemoteProperties.class)</span><br><span class="line">@RestController</span><br><span class="line">public class PageResultController &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    RemoteProperties remoteProperties;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(&quot;&#x2F;indexMap&quot;)</span><br><span class="line">    public String index()&#123;</span><br><span class="line">        return &quot;标题&quot;+remoteProperties.getTitle()+&quot;说明&quot;+remoteProperties.getDescription();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="方法二："><a href="#方法二：" class="headerlink" title="方法二："></a>方法二：</h2><p><img src="/2020/08/26/springboot%E8%AF%BB%E5%8F%96%E8%87%AA%E5%AE%9A%E4%B9%89properties%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%96%B9%E6%B3%95/img4.png" alt></p>]]></content>
+      
+      
       <categories>
-        <category>Github</category>
+          
+          <category> SpringBoot </category>
+          
       </categories>
-  </entry>
-  <entry>
-    <title>JavaSE如何安装JDK以及配置Java运行环境</title>
-    <url>/2020/08/28/%E3%80%90Java-SE%E3%80%91%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85JDK%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AEJava%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/</url>
-    <content><![CDATA[<h4 id="摘要：不管是作为苦逼的Java码农，还是高端大气的Java系统架构师，如果不会安装JDK以及配置Java运行环境，那就巧妇难为无米之炊，不能进行Java后续的代码编写。当然如果你是Myeclipse编译器的爱好者，你就可以直接点击右上角的×，然后在心里给我一个大大的鄙视就好了。如果你使用的是dos黑框编译Java代码，那么希望接下来的内容能带你进入Java的新世界。"><a href="#摘要：不管是作为苦逼的Java码农，还是高端大气的Java系统架构师，如果不会安装JDK以及配置Java运行环境，那就巧妇难为无米之炊，不能进行Java后续的代码编写。当然如果你是Myeclipse编译器的爱好者，你就可以直接点击右上角的×，然后在心里给我一个大大的鄙视就好了。如果你使用的是dos黑框编译Java代码，那么希望接下来的内容能带你进入Java的新世界。" class="headerlink" title="摘要：不管是作为苦逼的Java码农，还是高端大气的Java系统架构师，如果不会安装JDK以及配置Java运行环境，那就巧妇难为无米之炊，不能进行Java后续的代码编写。当然如果你是Myeclipse编译器的爱好者，你就可以直接点击右上角的×，然后在心里给我一个大大的鄙视就好了。如果你使用的是dos黑框编译Java代码，那么希望接下来的内容能带你进入Java的新世界。"></a>摘要：不管是作为苦逼的Java码农，还是高端大气的Java系统架构师，如果不会安装JDK以及配置Java运行环境，那就巧妇难为无米之炊，不能进行Java后续的代码编写。当然如果你是Myeclipse编译器的爱好者，你就可以直接点击右上角的×，然后在心里给我一个大大的鄙视就好了。如果你使用的是dos黑框编译Java代码，那么希望接下来的内容能带你进入Java的新世界。</h4><p>1.JDK下载地址：<a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</a>.</p>
-<p><img src="/2020/08/28/%E3%80%90Java-SE%E3%80%91%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85JDK%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AEJava%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/img1.png" alt></p>
-<p>2.点击Accept License Agreement，下载适合自己电脑版本的JDK.由于我的电脑是windows10 64位专业版，所以我选择的是最后一个。<br><img src="/2020/08/28/%E3%80%90Java-SE%E3%80%91%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85JDK%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AEJava%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/img2.png" alt><br> 点击红色下载按钮。保存位置自己决定，只要自己安装时能找到就行。</p>
-<p>3.找到安装文件，双击。<br><img src="/2020/08/28/%E3%80%90Java-SE%E3%80%91%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85JDK%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AEJava%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/img3.png" alt></p>
-<p>4.下一步，这里会让你选择安装目录。<br>注意：最好不要选择源安装目录，因为你发现Program Files中间含有空格，以后编译java软件可能会发生错误，一时半会都找不到问题出在哪里，所以防患于未然，这里建议安装到其他目录上面。我个人是选择在D盘新建一个文件给他叫做Java，打开Java文件夹，在里面新建两个文件夹，一个叫jdk，一个叫jre.</p>
-<p><img src="/2020/08/28/%E3%80%90Java-SE%E3%80%91%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85JDK%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AEJava%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/img4.png" alt></p>
-<p>5.回到原来的安装界面，更改安装目录到刚刚新建的那个jdk文件下。点击下一步。</p>
-<p><img src="/2020/08/28/%E3%80%90Java-SE%E3%80%91%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85JDK%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AEJava%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/img5.png" alt></p>
-<p>6.安装完jdk之后，会弹出jre的安装界面。这里选择安装路径到新建的jre文件夹下面。</p>
-<p><img src="/2020/08/28/%E3%80%90Java-SE%E3%80%91%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85JDK%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AEJava%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/img6.png" alt></p>
-<p>7.点击下一步。之后jdk和jre都安装成功。点击关闭。</p>
-<p><img src="/2020/08/28/%E3%80%90Java-SE%E3%80%91%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85JDK%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AEJava%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/img7.png" alt></p>
-<p>8.测试jdk是否安装成功。这里教大家一个快捷键。windows+R打开运行界面。输入cmd打开dos系统。</p>
-<p><img src="/2020/08/28/%E3%80%90Java-SE%E3%80%91%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85JDK%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AEJava%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/img8.png" alt></p>
-<p>9.点击运行。输入java。如果显示下面内容就表示安装成功。</p>
-<p><img src="/2020/08/28/%E3%80%90Java-SE%E3%80%91%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85JDK%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AEJava%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/img9.png" alt></p>
-<p>10.但是当你输入javac的时候，会显示这个。这是因为你还没有配置java运行环境，接下来教你们怎么配置java运行环境，配置完运行环境就能使用完整的java了。</p>
-<p><img src="/2020/08/28/%E3%80%90Java-SE%E3%80%91%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85JDK%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AEJava%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/img10.png" alt></p>
-<p>11.右键电脑属性，打开高级系统设置。</p>
-<p><img src="/2020/08/28/%E3%80%90Java-SE%E3%80%91%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85JDK%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AEJava%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/img11.png" alt></p>
-<p>12.点击高级，再点击环境变量。</p>
-<p><img src="/2020/08/28/%E3%80%90Java-SE%E3%80%91%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85JDK%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AEJava%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/img12.png" alt></p>
-<p>13.新建系统变量JAVA_HOME，变量值填D:\Java\jdk，（这是我的jdk的安装路径，你们安装在其他盘的找到jdk的安装路径复制进去就行）</p>
-<p><img src="/2020/08/28/%E3%80%90Java-SE%E3%80%91%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85JDK%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AEJava%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/img13.png" alt></p>
-<p>14.找到自己系统变量里的Path,双击，找到编辑文本点击，在变量值的最后添加   ;%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin</p>
-<p><img src="/2020/08/28/%E3%80%90Java-SE%E3%80%91%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85JDK%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AEJava%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/img14.png" alt></p>
-<p>15.新建系统变量CLASSPATH，变量值填  .;%JAVA_HOME%\lib;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar（注意这个变量值前面还有一个点，代表从当前路径）</p>
-<p><img src="/2020/08/28/%E3%80%90Java-SE%E3%80%91%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85JDK%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AEJava%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/img15.png" alt></p>
-<p>16.点击确定，这时来测试以下javac能不能用，windows+R键打开运行，输入cmd，打开dos系统，输入javac.</p>
-<p><img src="/2020/08/28/%E3%80%90Java-SE%E3%80%91%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85JDK%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AEJava%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/img16.png" alt></p>
-<p>17.到此为止，jdk的安装以及java运行环境已经全部完成了，使用IDEA的同学可以开始自己的编程之旅了，如果在配置环境变量之中遇到任何问题，欢迎在评论区留言。</p>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> properties配置文件 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>IIS部署后客户端访问报403</title>
+      <link href="/2020/06/24/IIS%E9%83%A8%E7%BD%B2%E5%90%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AE%BF%E9%97%AE%E6%8A%A5403/"/>
+      <url>/2020/06/24/IIS%E9%83%A8%E7%BD%B2%E5%90%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AE%BF%E9%97%AE%E6%8A%A5403/</url>
+      
+        <content type="html"><![CDATA[<h3 id="错误页面"><a href="#错误页面" class="headerlink" title="错误页面"></a>错误页面</h3><p><img src="/2020/06/24/IIS%E9%83%A8%E7%BD%B2%E5%90%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AE%BF%E9%97%AE%E6%8A%A5403/img1.png" alt></p><h3 id="解决方案1"><a href="#解决方案1" class="headerlink" title="解决方案1"></a>解决方案1</h3><p>修改应用程序池版本为4.0</p><p><img src="/2020/06/24/IIS%E9%83%A8%E7%BD%B2%E5%90%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AE%BF%E9%97%AE%E6%8A%A5403/img2.png" alt></p><h3 id="解决方案2"><a href="#解决方案2" class="headerlink" title="解决方案2"></a>解决方案2</h3><p>当前主页目录浏览设置为启用</p><h3 id="解决方案3"><a href="#解决方案3" class="headerlink" title="解决方案3"></a>解决方案3</h3><p>添加默认文档<br><img src="/2020/06/24/IIS%E9%83%A8%E7%BD%B2%E5%90%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AE%BF%E9%97%AE%E6%8A%A5403/img3.png" alt></p><h3 id="解决方案4"><a href="#解决方案4" class="headerlink" title="解决方案4"></a>解决方案4</h3><p><img src="/2020/06/24/IIS%E9%83%A8%E7%BD%B2%E5%90%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AE%BF%E9%97%AE%E6%8A%A5403/img4.png" alt><br><img src="/2020/06/24/IIS%E9%83%A8%E7%BD%B2%E5%90%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AE%BF%E9%97%AE%E6%8A%A5403/img5.png" alt></p><p>SSL设置，不勾选要求SSL</p><h3 id="还有的情况是因为你的防火墙没有开放指定端口，或者域名配置相关问题"><a href="#还有的情况是因为你的防火墙没有开放指定端口，或者域名配置相关问题" class="headerlink" title="还有的情况是因为你的防火墙没有开放指定端口，或者域名配置相关问题"></a>还有的情况是因为你的防火墙没有开放指定端口，或者域名配置相关问题</h3>]]></content>
+      
+      
       <categories>
-        <category>JAVA</category>
+          
+          <category> IIS </category>
+          
       </categories>
-      <tags>
-        <tag>配置Java运行环境</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>解决服务器上运行安装程序，无反应的问题</title>
-    <url>/2020/08/28/%E8%A7%A3%E5%86%B3%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E8%BF%90%E8%A1%8C%E5%AE%89%E8%A3%85%E7%A8%8B%E5%BA%8F%EF%BC%8C%E6%97%A0%E5%8F%8D%E5%BA%94%E7%9A%84%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<h3 id="解决方案其中的一种"><a href="#解决方案其中的一种" class="headerlink" title="解决方案其中的一种"></a>解决方案其中的一种</h3><p>将当前用户变量这里的TMP和TEMP两个参数删除掉，重启服务器，重新运行安装程序，成功！</p>
-]]></content>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>hexo在文章中添加图片</title>
+      <link href="/2020/06/24/hexo%E5%9C%A8%E6%96%87%E7%AB%A0%E4%B8%AD%E6%B7%BB%E5%8A%A0%E5%9B%BE%E7%89%87/"/>
+      <url>/2020/06/24/hexo%E5%9C%A8%E6%96%87%E7%AB%A0%E4%B8%AD%E6%B7%BB%E5%8A%A0%E5%9B%BE%E7%89%87/</url>
+      
+        <content type="html"><![CDATA[<h2 id="hexo-添加图片插件"><a href="#hexo-添加图片插件" class="headerlink" title="hexo 添加图片插件"></a>hexo 添加图片插件</h2><p>安装图片插件</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-asset-image --save</span><br></pre></td></tr></table></figure><p><img src="/2020/06/24/hexo%E5%9C%A8%E6%96%87%E7%AB%A0%E4%B8%AD%E6%B7%BB%E5%8A%A0%E5%9B%BE%E7%89%87/img1.png" alt></p><p>在_config.yml配置文件中，修改为 post_asset_folder: true， 然后新建一篇文章</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new post ceshi</span><br></pre></td></tr></table></figure><p>这个时候会在_posts文件夹下多出一个与文章同名文件夹，可以将当前文章用到的图片放在此文件夹下</p><p><img src="/2020/06/24/hexo%E5%9C%A8%E6%96%87%E7%AB%A0%E4%B8%AD%E6%B7%BB%E5%8A%A0%E5%9B%BE%E7%89%87/img2.png" alt></p><h3 id="hexo-关于图片路径不能访问"><a href="#hexo-关于图片路径不能访问" class="headerlink" title="hexo 关于图片路径不能访问"></a>hexo 关于图片路径不能访问</h3><p>通常图片路径为：<img src="/2020/06/24/hexo%E5%9C%A8%E6%96%87%E7%AB%A0%E4%B8%AD%E6%B7%BB%E5%8A%A0%E5%9B%BE%E7%89%87/img3.png" alt>  在Github中的hexo可以查看仓库路径来修改</p>]]></content>
+      
+      
       <categories>
-        <category>服务器</category>
+          
+          <category> Github </category>
+          
       </categories>
-      <tags>
-        <tag>阿里云服务器Windows Server 2008</tag>
-      </tags>
-  </entry>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>自建Github博客通过域名的访问</title>
+      <link href="/2020/06/24/%E8%87%AA%E5%BB%BAGithub%E5%8D%9A%E5%AE%A2%E9%80%9A%E8%BF%87%E5%9F%9F%E5%90%8D%E7%9A%84%E8%AE%BF%E9%97%AE/"/>
+      <url>/2020/06/24/%E8%87%AA%E5%BB%BAGithub%E5%8D%9A%E5%AE%A2%E9%80%9A%E8%BF%87%E5%9F%9F%E5%90%8D%E7%9A%84%E8%AE%BF%E9%97%AE/</url>
+      
+        <content type="html"><![CDATA[<p>我们在项目或者博客上传到Github的时候会出现域名不能访问自建页面的情况，检查仓库名称与配置名称是否一致，仓库名称格式为xxx.github.io(xxx为你的用户名)<br><img src="/2020/06/24/%E8%87%AA%E5%BB%BAGithub%E5%8D%9A%E5%AE%A2%E9%80%9A%E8%BF%87%E5%9F%9F%E5%90%8D%E7%9A%84%E8%AE%BF%E9%97%AE/img1.png" alt><br><img src="/2020/06/24/%E8%87%AA%E5%BB%BAGithub%E5%8D%9A%E5%AE%A2%E9%80%9A%E8%BF%87%E5%9F%9F%E5%90%8D%E7%9A%84%E8%AE%BF%E9%97%AE/img2.png" alt><br>再通过配置指定域名来访问，域名指向你的仓库地址</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Github </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+  
+  
 </search>
