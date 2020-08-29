@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="阿里云服务器Windows Server 2008," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -88,18 +88,19 @@
 
 
 
-<meta name="description" content="解决方案其中的一种将当前用户变量这里的TMP和TEMP两个参数删除掉，重启服务器，重新运行安装程序，成功！">
+<meta name="description" content="mysql5.7运行sql文件报错[ERR] 1273 - Unknown collation: ‘utf8mb4_0900_ai_ci’报错原因：生成转储文件的数据库版本为8.0,要导入sql文件的数据库版本为5.6,因为是高版本导入到低版本，引起1273错误 解决方法：打开sql文件，将文件中的所有utf8mb4_0900_ai_ci替换为utf8_general_ciutf8mb4替换为ut">
 <meta property="og:type" content="article">
-<meta property="og:title" content="解决服务器上运行安装程序，无反应的问题">
-<meta property="og:url" content="http://liux.club/2020/08/28/%E8%A7%A3%E5%86%B3%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E8%BF%90%E8%A1%8C%E5%AE%89%E8%A3%85%E7%A8%8B%E5%BA%8F%EF%BC%8C%E6%97%A0%E5%8F%8D%E5%BA%94%E7%9A%84%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:title" content="mysql5.7运行sql文件报错">
+<meta property="og:url" content="http://liux.club/2020/08/29/mysql5-7%E8%BF%90%E8%A1%8Csql%E6%96%87%E4%BB%B6%E6%8A%A5%E9%94%99/index.html">
 <meta property="og:site_name" content="Mr.Liu">
-<meta property="og:description" content="解决方案其中的一种将当前用户变量这里的TMP和TEMP两个参数删除掉，重启服务器，重新运行安装程序，成功！">
+<meta property="og:description" content="mysql5.7运行sql文件报错[ERR] 1273 - Unknown collation: ‘utf8mb4_0900_ai_ci’报错原因：生成转储文件的数据库版本为8.0,要导入sql文件的数据库版本为5.6,因为是高版本导入到低版本，引起1273错误 解决方法：打开sql文件，将文件中的所有utf8mb4_0900_ai_ci替换为utf8_general_ciutf8mb4替换为ut">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-08-28T12:18:08.000Z">
-<meta property="article:modified_time" content="2020-08-28T12:22:25.718Z">
+<meta property="og:image" content="http://liux.club/2020/08/29/mysql5-7%E8%BF%90%E8%A1%8Csql%E6%96%87%E4%BB%B6%E6%8A%A5%E9%94%99/img1.png">
+<meta property="article:published_time" content="2020-08-29T02:48:18.000Z">
+<meta property="article:modified_time" content="2020-08-29T02:50:24.305Z">
 <meta property="article:author" content="Mr.Liu">
-<meta property="article:tag" content="阿里云服务器Windows Server 2008">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://liux.club/2020/08/29/mysql5-7%E8%BF%90%E8%A1%8Csql%E6%96%87%E4%BB%B6%E6%8A%A5%E9%94%99/img1.png">
 
 
 
@@ -129,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://Liux.club/2020/08/28/解决服务器上运行安装程序，无反应的问题/"/>
+  <link rel="canonical" href="http://Liux.club/2020/08/29/mysql5-7运行sql文件报错/"/>
 
 
 
 
 
-  <title>解决服务器上运行安装程序，无反应的问题 | Mr.Liu</title>
+  <title>mysql5.7运行sql文件报错 | Mr.Liu</title>
   
 
 
@@ -266,7 +267,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://Liux.club/2020/08/28/%E8%A7%A3%E5%86%B3%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E8%BF%90%E8%A1%8C%E5%AE%89%E8%A3%85%E7%A8%8B%E5%BA%8F%EF%BC%8C%E6%97%A0%E5%8F%8D%E5%BA%94%E7%9A%84%E9%97%AE%E9%A2%98/">
+    <link itemprop="mainEntityOfPage" href="http://Liux.club/2020/08/29/mysql5-7%E8%BF%90%E8%A1%8Csql%E6%96%87%E4%BB%B6%E6%8A%A5%E9%94%99/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mr.Liu">
@@ -283,7 +284,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">解决服务器上运行安装程序，无反应的问题</h1>
+          <h1 class="post-title" itemprop="name headline">mysql5.7运行sql文件报错</h1>
         
 
         <div class="post-meta">
@@ -295,8 +296,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-28T20:18:08+08:00">
-                2020-08-28
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-29T10:48:18+08:00">
+                2020-08-29
               </time>
             
 
@@ -311,8 +312,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2020-08-28T20:22:25+08:00">
-                2020-08-28
+              <time title="Post modified" itemprop="dateModified" datetime="2020-08-29T10:50:24+08:00">
+                2020-08-29
               </time>
             
           </span>
@@ -330,8 +331,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/" itemprop="url" rel="index">
-                    <span itemprop="name">服务器</span>
+                  <a href="/categories/MySql/" itemprop="url" rel="index">
+                    <span itemprop="name">MySql</span>
                   </a>
                 </span>
 
@@ -361,7 +362,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  43
+                  124
                 </span>
               
 
@@ -398,7 +399,9 @@
       
 
       
-        <h3 id="解决方案其中的一种"><a href="#解决方案其中的一种" class="headerlink" title="解决方案其中的一种"></a>解决方案其中的一种</h3><p>将当前用户变量这里的TMP和TEMP两个参数删除掉，重启服务器，重新运行安装程序，成功！</p>
+        <h3 id="mysql5-7运行sql文件报错"><a href="#mysql5-7运行sql文件报错" class="headerlink" title="mysql5.7运行sql文件报错"></a>mysql5.7运行sql文件报错</h3><h4 id="ERR-1273-Unknown-collation-‘utf8mb4-0900-ai-ci’"><a href="#ERR-1273-Unknown-collation-‘utf8mb4-0900-ai-ci’" class="headerlink" title="[ERR] 1273 - Unknown collation: ‘utf8mb4_0900_ai_ci’"></a>[ERR] 1273 - Unknown collation: ‘utf8mb4_0900_ai_ci’</h4><p>报错原因：<br>生成转储文件的数据库版本为8.0,要导入sql文件的数据库版本为5.6,因为是高版本导入到低版本，引起1273错误</p>
+<p>解决方法：<br>打开sql文件，将文件中的所有<br>utf8mb4_0900_ai_ci替换为utf8_general_ci<br>utf8mb4替换为utf8<br>保存后再次运行sql文件，运行成功</p>
+<h3 id="在Navicat-查询的界面-使用Ctrl-F-唤出-查找功能-勾选-替换-进行替换"><a href="#在Navicat-查询的界面-使用Ctrl-F-唤出-查找功能-勾选-替换-进行替换" class="headerlink" title="在Navicat 查询的界面 使用Ctrl + F 唤出 查找功能 勾选  替换 进行替换"></a>在Navicat 查询的界面 使用Ctrl + F 唤出 查找功能 勾选  替换 进行替换</h3><p><img src="/2020/08/29/mysql5-7%E8%BF%90%E8%A1%8Csql%E6%96%87%E4%BB%B6%E6%8A%A5%E9%94%99/img1.png" alt></p>
 
       
     </div>
@@ -425,12 +428,12 @@
   <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
   <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
 
-  <p><span>本文标题:</span>解决服务器上运行安装程序，无反应的问题</a></p>
+  <p><span>本文标题:</span>mysql5.7运行sql文件报错</a></p>
   <p><span>文章作者:</span>Mr.Liu</a></p>
-  <p><span>发布时间:</span>2020年08月28日 - 20:18:08</p>
-  <p><span>最后更新:</span>2020年08月28日 - 20:22:25</p>
-  <p><span>原始链接:</span><a href="/2020/08/28/%E8%A7%A3%E5%86%B3%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E8%BF%90%E8%A1%8C%E5%AE%89%E8%A3%85%E7%A8%8B%E5%BA%8F%EF%BC%8C%E6%97%A0%E5%8F%8D%E5%BA%94%E7%9A%84%E9%97%AE%E9%A2%98/" title="解决服务器上运行安装程序，无反应的问题">http://liux.club/2020/08/28/%E8%A7%A3%E5%86%B3%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E8%BF%90%E8%A1%8C%E5%AE%89%E8%A3%85%E7%A8%8B%E5%BA%8F%EF%BC%8C%E6%97%A0%E5%8F%8D%E5%BA%94%E7%9A%84%E9%97%AE%E9%A2%98/</a>
-    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://liux.club/2020/08/28/%E8%A7%A3%E5%86%B3%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E8%BF%90%E8%A1%8C%E5%AE%89%E8%A3%85%E7%A8%8B%E5%BA%8F%EF%BC%8C%E6%97%A0%E5%8F%8D%E5%BA%94%E7%9A%84%E9%97%AE%E9%A2%98/"  aria-label="复制成功！"></i></span>
+  <p><span>发布时间:</span>2020年08月29日 - 10:48:18</p>
+  <p><span>最后更新:</span>2020年08月29日 - 10:50:24</p>
+  <p><span>原始链接:</span><a href="/2020/08/29/mysql5-7%E8%BF%90%E8%A1%8Csql%E6%96%87%E4%BB%B6%E6%8A%A5%E9%94%99/" title="mysql5.7运行sql文件报错">http://liux.club/2020/08/29/mysql5-7%E8%BF%90%E8%A1%8Csql%E6%96%87%E4%BB%B6%E6%8A%A5%E9%94%99/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://liux.club/2020/08/29/mysql5-7%E8%BF%90%E8%A1%8Csql%E6%96%87%E4%BB%B6%E6%8A%A5%E9%94%99/"  aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
 </div>
@@ -459,12 +462,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8Windows-Server-2008/" rel="tag"><i class="fa fa-tag"></i>阿里云服务器Windows Server 2008</a>
-          
-        </div>
-      
 
       
       
@@ -474,8 +471,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/08/26/springboot%E8%AF%BB%E5%8F%96%E8%87%AA%E5%AE%9A%E4%B9%89properties%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%96%B9%E6%B3%95/" rel="next" title="springboot读取自定义properties配置文件方法">
-                <i class="fa fa-chevron-left"></i> springboot读取自定义properties配置文件方法
+              <a href="/2020/08/28/%E3%80%90Java-SE%E3%80%91%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85JDK%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AEJava%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/" rel="next" title="JavaSE如何安装JDK以及配置Java运行环境">
+                <i class="fa fa-chevron-left"></i> JavaSE如何安装JDK以及配置Java运行环境
               </a>
             
           </div>
@@ -483,10 +480,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/08/28/%E3%80%90Java-SE%E3%80%91%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85JDK%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AEJava%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/" rel="prev" title="JavaSE如何安装JDK以及配置Java运行环境">
-                JavaSE如何安装JDK以及配置Java运行环境 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -693,7 +686,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案其中的一种"><span class="nav-number">1.</span> <span class="nav-text">解决方案其中的一种</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#mysql5-7运行sql文件报错"><span class="nav-number">1.</span> <span class="nav-text">mysql5.7运行sql文件报错</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ERR-1273-Unknown-collation-‘utf8mb4-0900-ai-ci’"><span class="nav-number">1.1.</span> <span class="nav-text">[ERR] 1273 - Unknown collation: ‘utf8mb4_0900_ai_ci’</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在Navicat-查询的界面-使用Ctrl-F-唤出-查找功能-勾选-替换-进行替换"><span class="nav-number">2.</span> <span class="nav-text">在Navicat 查询的界面 使用Ctrl + F 唤出 查找功能 勾选  替换 进行替换</span></a></li></ol></div>
             
 
           </div>

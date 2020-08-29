@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>mysql5.7运行sql文件报错</title>
+      <link href="/2020/08/29/mysql5-7%E8%BF%90%E8%A1%8Csql%E6%96%87%E4%BB%B6%E6%8A%A5%E9%94%99/"/>
+      <url>/2020/08/29/mysql5-7%E8%BF%90%E8%A1%8Csql%E6%96%87%E4%BB%B6%E6%8A%A5%E9%94%99/</url>
+      
+        <content type="html"><![CDATA[<h3 id="mysql5-7运行sql文件报错"><a href="#mysql5-7运行sql文件报错" class="headerlink" title="mysql5.7运行sql文件报错"></a>mysql5.7运行sql文件报错</h3><h4 id="ERR-1273-Unknown-collation-‘utf8mb4-0900-ai-ci’"><a href="#ERR-1273-Unknown-collation-‘utf8mb4-0900-ai-ci’" class="headerlink" title="[ERR] 1273 - Unknown collation: ‘utf8mb4_0900_ai_ci’"></a>[ERR] 1273 - Unknown collation: ‘utf8mb4_0900_ai_ci’</h4><p>报错原因：<br>生成转储文件的数据库版本为8.0,要导入sql文件的数据库版本为5.6,因为是高版本导入到低版本，引起1273错误</p><p>解决方法：<br>打开sql文件，将文件中的所有<br>utf8mb4_0900_ai_ci替换为utf8_general_ci<br>utf8mb4替换为utf8<br>保存后再次运行sql文件，运行成功</p><h3 id="在Navicat-查询的界面-使用Ctrl-F-唤出-查找功能-勾选-替换-进行替换"><a href="#在Navicat-查询的界面-使用Ctrl-F-唤出-查找功能-勾选-替换-进行替换" class="headerlink" title="在Navicat 查询的界面 使用Ctrl + F 唤出 查找功能 勾选  替换 进行替换"></a>在Navicat 查询的界面 使用Ctrl + F 唤出 查找功能 勾选  替换 进行替换</h3><p><img src="/2020/08/29/mysql5-7%E8%BF%90%E8%A1%8Csql%E6%96%87%E4%BB%B6%E6%8A%A5%E9%94%99/img1.png" alt></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> MySql </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>JavaSE如何安装JDK以及配置Java运行环境</title>
       <link href="/2020/08/28/%E3%80%90Java-SE%E3%80%91%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85JDK%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AEJava%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/"/>
       <url>/2020/08/28/%E3%80%90Java-SE%E3%80%91%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85JDK%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AEJava%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/</url>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liux.club/"/>
-  <updated>2020-08-28T12:48:28.013Z</updated>
+  <updated>2020-08-29T02:50:24.305Z</updated>
   <id>http://liux.club/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>mysql5.7运行sql文件报错</title>
+    <link href="http://liux.club/2020/08/29/mysql5-7%E8%BF%90%E8%A1%8Csql%E6%96%87%E4%BB%B6%E6%8A%A5%E9%94%99/"/>
+    <id>http://liux.club/2020/08/29/mysql5-7%E8%BF%90%E8%A1%8Csql%E6%96%87%E4%BB%B6%E6%8A%A5%E9%94%99/</id>
+    <published>2020-08-29T02:48:18.000Z</published>
+    <updated>2020-08-29T02:50:24.305Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="mysql5-7运行sql文件报错"><a href="#mysql5-7运行sql文件报错" class="headerlink" title="mysql5.7运行sql文件报错"></a>mysql5.7运行sql文件报错</h3><h4 id="ERR-1273-Unknown-collation-‘utf8mb4-0900-ai-ci’"><a href="#ERR-1273-Unknown-collation-‘utf8mb4-0900-ai-ci’" class="headerlink" title="[ERR] 1273 - Unknown collation: ‘utf8mb4_0900_ai_ci’"></a>[ERR] 1273 - Unknown collation: ‘utf8mb4_0900_ai_ci’</h4><p>报错原因：<br>生成转储文件的数据库版本为8.0,要导入sql文件的数据库版本为5.6,因为是高版本导入到低版本，引起1273错误</p><p>解决方法：<br>打开sql文件，将文件中的所有<br>utf8mb4_0900_ai_ci替换为utf8_general_ci<br>utf8mb4替换为utf8<br>保存后再次运行sql文件，运行成功</p><h3 id="在Navicat-查询的界面-使用Ctrl-F-唤出-查找功能-勾选-替换-进行替换"><a href="#在Navicat-查询的界面-使用Ctrl-F-唤出-查找功能-勾选-替换-进行替换" class="headerlink" title="在Navicat 查询的界面 使用Ctrl + F 唤出 查找功能 勾选  替换 进行替换"></a>在Navicat 查询的界面 使用Ctrl + F 唤出 查找功能 勾选  替换 进行替换</h3><p><img src="/2020/08/29/mysql5-7%E8%BF%90%E8%A1%8Csql%E6%96%87%E4%BB%B6%E6%8A%A5%E9%94%99/img1.png" alt></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;mysql5-7运行sql文件报错&quot;&gt;&lt;a href=&quot;#mysql5-7运行sql文件报错&quot; class=&quot;headerlink&quot; title=&quot;mysql5.7运行sql文件报错&quot;&gt;&lt;/a&gt;mysql5.7运行sql文件报错&lt;/h3&gt;&lt;h4 id=&quot;ERR-1
+      
+    
+    </summary>
+    
+    
+      <category term="MySql" scheme="http://Liux.club/categories/MySql/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>JavaSE如何安装JDK以及配置Java运行环境</title>
