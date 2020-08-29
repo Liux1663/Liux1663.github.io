@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liux.club/"/>
-  <updated>2020-08-29T02:50:24.305Z</updated>
+  <updated>2020-08-29T02:54:00.491Z</updated>
   <id>http://liux.club/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Redis下载及安装(windows版)</title>
+    <link href="http://liux.club/2020/08/29/Redis%E4%B8%8B%E8%BD%BD%E5%8F%8A%E5%AE%89%E8%A3%85-windows%E7%89%88/"/>
+    <id>http://liux.club/2020/08/29/Redis%E4%B8%8B%E8%BD%BD%E5%8F%8A%E5%AE%89%E8%A3%85-windows%E7%89%88/</id>
+    <published>2020-08-29T02:51:25.000Z</published>
+    <updated>2020-08-29T02:54:00.491Z</updated>
+    
+    <content type="html"><![CDATA[<p>下载地址<br>1、Github下载地址：<a href="https://github.com/MicrosoftArchive/redis/releases" target="_blank" rel="noopener">https://github.com/MicrosoftArchive/redis/releases</a><br>2、百度网盘下载地址 <a href="https://pan.baidu.com/s/1z1_OdNVbtgyEjiktqgB83g" target="_blank" rel="noopener">https://pan.baidu.com/s/1z1_OdNVbtgyEjiktqgB83g</a> 密码：kdfq</p><p>安装过程<br>1.首先先把下载的压缩包解压到一个文件夹中</p><p><img src="/2020/08/29/Redis%E4%B8%8B%E8%BD%BD%E5%8F%8A%E5%AE%89%E8%A3%85-windows%E7%89%88/img1.png" alt></p><p>2.打开cmd指令窗口<br>3.输入你刚才解压的文件路径<br>4.然后输入redis-server redis.windows.conf 命令</p><p><img src="/2020/08/29/Redis%E4%B8%8B%E8%BD%BD%E5%8F%8A%E5%AE%89%E8%A3%85-windows%E7%89%88/img2.png" alt></p><p>接下来部署Redis为windows下的服务 首先关掉上一个窗口再打开一个新的cmd命令窗口</p><p>然后输入指令redis-server –service-install redis.windows.conf</p><p><img src="/2020/08/29/Redis%E4%B8%8B%E8%BD%BD%E5%8F%8A%E5%AE%89%E8%A3%85-windows%E7%89%88/img3.png" alt></p><p>随后,进入右击此电脑–管理–服务和应用程序–服务 启动服务</p><p><img src="/2020/08/29/Redis%E4%B8%8B%E8%BD%BD%E5%8F%8A%E5%AE%89%E8%A3%85-windows%E7%89%88/img4.png" alt></p><p>Redis常用的指令<br>卸载服务：redis-server –service-uninstall<br>开启服务：redis-server –service-start<br>停止服务：redis-server –service-stop<br>测试redis,通过cd到我们解压的目录,输入指令通过Set get指令查看是否成功</p><p><img src="/2020/08/29/Redis%E4%B8%8B%E8%BD%BD%E5%8F%8A%E5%AE%89%E8%A3%85-windows%E7%89%88/img5.png" alt></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;下载地址&lt;br&gt;1、Github下载地址：&lt;a href=&quot;https://github.com/MicrosoftArchive/redis/releases&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/Micro
+      
+    
+    </summary>
+    
+    
+      <category term="Redis" scheme="http://Liux.club/categories/Redis/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>mysql5.7运行sql文件报错</title>

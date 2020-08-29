@@ -262,6 +262,207 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://Liux.club/2020/08/29/Redis%E4%B8%8B%E8%BD%BD%E5%8F%8A%E5%AE%89%E8%A3%85-windows%E7%89%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mr.Liu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://liux.club/2020/06/24/hexo%E5%9C%A8%E6%96%87%E7%AB%A0%E4%B8%AD%E6%B7%BB%E5%8A%A0%E5%9B%BE%E7%89%87/Headicon.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr.Liu">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/08/29/Redis%E4%B8%8B%E8%BD%BD%E5%8F%8A%E5%AE%89%E8%A3%85-windows%E7%89%88/" itemprop="url">Redis下载及安装(windows版)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-29T10:51:25+08:00">
+                2020-08-29
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-08-29T10:54:00+08:00">
+                2020-08-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Redis/" itemprop="url" rel="index">
+                    <span itemprop="name">Redis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  217
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>下载地址<br>1、Github下载地址：<a href="https://github.com/MicrosoftArchive/redis/releases" target="_blank" rel="noopener">https://github.com/MicrosoftArchive/redis/releases</a><br>2、百度网盘下载地址 <a href="https://pan.baidu.com/s/1z1_OdNVbtgyEjiktqgB83g" target="_blank" rel="noopener">https://pan.baidu.com/s/1z1_OdNVbtgyEjiktqgB83g</a> 密码：kdfq</p>
+<p>安装过程<br>1.首先先把下载的压缩包解压到一个文件夹中</p>
+<p><img src="/2020/08/29/Redis%E4%B8%8B%E8%BD%BD%E5%8F%8A%E5%AE%89%E8%A3%85-windows%E7%89%88/img1.png" alt></p>
+<p>2.打开cmd指令窗口<br>3.输入你刚才解压的文件路径<br>4.然后输入redis-server redis.windows.conf 命令</p>
+<p><img src="/2020/08/29/Redis%E4%B8%8B%E8%BD%BD%E5%8F%8A%E5%AE%89%E8%A3%85-windows%E7%89%88/img2.png" alt></p>
+<p>接下来部署Redis为windows下的服务 首先关掉上一个窗口再打开一个新的cmd命令窗口</p>
+<p>然后输入指令redis-server –service-install redis.windows.conf</p>
+<p><img src="/2020/08/29/Redis%E4%B8%8B%E8%BD%BD%E5%8F%8A%E5%AE%89%E8%A3%85-windows%E7%89%88/img3.png" alt></p>
+<p>随后,进入右击此电脑–管理–服务和应用程序–服务 启动服务</p>
+<p><img src="/2020/08/29/Redis%E4%B8%8B%E8%BD%BD%E5%8F%8A%E5%AE%89%E8%A3%85-windows%E7%89%88/img4.png" alt></p>
+<p>Redis常用的指令<br>卸载服务：redis-server –service-uninstall<br>开启服务：redis-server –service-start<br>停止服务：redis-server –service-stop<br>测试redis,通过cd到我们解压的目录,输入指令通过Set get指令查看是否成功</p>
+<p><img src="/2020/08/29/Redis%E4%B8%8B%E8%BD%BD%E5%8F%8A%E5%AE%89%E8%A3%85-windows%E7%89%88/img5.png" alt></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://Liux.club/2020/08/29/mysql5-7%E8%BF%90%E8%A1%8Csql%E6%96%87%E4%BB%B6%E6%8A%A5%E9%94%99/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1687,7 +1888,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1698,7 +1899,7 @@
               
               <div class="site-state-item site-state-categories">
                 
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">categories</span>
                 
               </div>
@@ -1804,7 +2005,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">1.6k</span>
+    <span title="Site words total count">1.8k</span>
   
   -->
 </div>
@@ -1834,7 +2035,7 @@
 </div>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共1.6k字</span>
+  <span class="post-count">博客全站共1.8k字</span>
 </div>
         
 
